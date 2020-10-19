@@ -121,7 +121,6 @@ function toggleMenuMobile() {
     toggleClass(navigationMenu, "open");
 
     if(checkClass(navigationMenu, 'open')) {
-        console.log("open");
         slideInMobileNavUL();
     } else {
         // navigationMenu.className += " closing";
@@ -201,7 +200,6 @@ function slideOutMobileNavUL(){
 
             window.clearInterval(instance);
             menuButton.style.pointerEvents = "auto";
-            console.log("tapos");
             toggleClass(navigationMenu, "closing");
         } else {
             navMenuUL.style.width = "calc(" + slideleft + "% - 90px)";

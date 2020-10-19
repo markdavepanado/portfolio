@@ -33,7 +33,6 @@ function onLoadInit() {
 function fadeInLogo() {
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(logoHeader).getPropertyValue("opacity"));
-    console.log(value);
     var instance = window.setInterval(function() {
         if(value > 1) {
             window.clearInterval(instance);
@@ -42,7 +41,6 @@ function fadeInLogo() {
         } else {
             logoHeader.style.opacity = value;
             value = value + increment;
-            console.log("onload", value);
         }
     }, 10);
 }
