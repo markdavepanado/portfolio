@@ -2,6 +2,11 @@ var loadingImg = document.getElementById("loading-img");
 var loadingText = document.getElementById("loading-text");
 var loaderContainer = document.getElementsByClassName("loader-container")[0];
 
+// HEADER CONTENT FOOTER COPYRIGHT
+var hmfContainer = document.getElementsByClassName("header-main-footer-container")[0];
+var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
+var copyright = document.getElementsByClassName("copyright-container")[0];
+
 init();
 function init() {
     fadeinImg();
@@ -79,11 +84,18 @@ function fadeOutLoading() {
         if(opacity < 0) {
             clearInterval(instance);
             loaderContainer.style.display = "none";
+            hmfContainer.style.cssText = 'display:initial !important';
+            navIndicatorContainer.style.cssText = 'display:flex !important';
+            copyright.style.cssText = 'display:initial !important';
+            highlightActiveMenu();
+            onLoadInit();
+            
         } else {
             loaderContainer.style.opacity = opacity;
             opacity = opacity - decrement;
         }
-    }, 10);
+    }, 1);
+    // }, 10);
 }
 
 function getCurrentTranslateX(element) {

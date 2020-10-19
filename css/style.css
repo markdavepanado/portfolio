@@ -62,8 +62,13 @@ body {
 
 /* >>>>> PAGE LAYOUT */
 
+.header-main-footer-container, .navigation-indicator-container, .copyright-container {
+    display: none!important;
+}
+
 .header-main-footer-container, .navigation-indicator-container {
     height: calc(100vh - 90px);
+    
 }
 
 .header-main-footer-container {
@@ -173,12 +178,12 @@ main {
 }
 
 .header-main-footer-container #content {
-    overflow: hidden;
+    /* overflow: hidden; */
     transform: translateX(-150%);
 }
 
 .header-main-footer-container #content:hover {
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 

@@ -11,7 +11,9 @@ var navigationIndicators = navigationDotContainer.getElementsByTagName("a");
 var currentNavPATH = './images/current-indicator.svg';
 var nextPrevPATH = './images/next-prev-indicator.svg';
 
+
 highlightActiveMenu();
+  
 main.addEventListener('scroll', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
 

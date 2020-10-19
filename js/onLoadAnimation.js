@@ -17,8 +17,10 @@ var navMenu = hmfContainer.getElementsByTagName("footer")[0].getElementsByClassN
 var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
 
 var content = document.getElementById("content");
-init();
-function init() {
+
+var copyright = document.getElementsByClassName("copyright-container")[0];
+
+function onLoadInit() {
     fadeInLogo();
 
     if(window.screen.width > 768) {
@@ -31,18 +33,18 @@ function init() {
 function fadeInLogo() {
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(logoHeader).getPropertyValue("opacity"));
-    
+    console.log(value);
     var instance = window.setInterval(function() {
         if(value > 1) {
             window.clearInterval(instance);
-            logoHeader.style.opacity = 1;
             logoHeader.style.opacity = "initial";
             
         } else {
             logoHeader.style.opacity = value;
             value = value + increment;
+            console.log("onload", value);
         }
-    }, 15);
+    }, 10);
 }
 
 function slideLeftNavMenu() {
