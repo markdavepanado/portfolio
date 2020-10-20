@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 * {
@@ -328,6 +329,8 @@ main {
 
     .navigation-menu button {
         display: inline-block;
+        position: fixed;
+        top: calc((100% - 20vh) - 20px + (10vh + 10px))!important;
     }
 
     .navigation-menu.open button {
