@@ -165,6 +165,8 @@ main {
     border: none;
     display: none;
     transition: all 0.5s;
+    background-color: transparent;
+    background: transparent;
 }
 
 .navigation-menu svg {
@@ -303,6 +305,10 @@ main {
 
 @media only screen and (max-width: 768px) {
 
+    body {
+        padding: 10px 20px;
+    }
+
     main {
         scroll-behavior: initial;
     }
@@ -313,6 +319,7 @@ main {
 
     .header-main-footer-container {
         width: 100%;
+        height: calc(100vh - 20px);
     }
 
     .header-main-footer-container #content {
@@ -335,10 +342,10 @@ main {
 
     .navigation-menu ul {
         position: absolute;
-        top: calc(10vh + 45px);
+        top: calc(10vh + 10px);
         /* width: calc(100% - 90px); */
-        width: calc(0% - 90px);
-        height: calc((100% - 20vh) - 90px)!important;
+        width: calc(0% - 40px);
+        height: calc((100% - 20vh) - 20px)!important;
         border-radius: 0 0 30px 0;
         background-color: var(--primary-color);
 
