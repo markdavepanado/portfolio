@@ -37,10 +37,7 @@ function slideleftImg(){
 
     var increment = 0.2;
     var slideleft = translateXpercentage;
-    
-    console.log("percentage: " + slideleft);
-    console.log("container width: " + loaderContainerWidth);
-    console.log("translateX in pixels: " + translateXpixels);
+
     var instance = window.setInterval(function() {
         if(slideleft < 0) {
             fadeinText();
@@ -51,7 +48,6 @@ function slideleftImg(){
             loadingImgTextContainer.style.transform = "translateX(" + 0 + "%)";
         } else {
             loadingImgTextContainer.style.transform = "translateX(" + slideleft + "%)";
-            console.log(slideleft)
             slideleft = slideleft - increment;
         }
         
