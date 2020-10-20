@@ -33,26 +33,36 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+
+    overflow: hidden;
 }
 
 .loader-container .loading {
     display: flex;
     align-items: center;
+
+    justify-content: center;
+    width: calc(100% + 90px);
+    /* transform: translateX(200px); */
+    transform: translateX(15%);
 }
 
+/* .loading h1 { */
 .loading h1 {
     font-size: 4vw;
     font-weight: 300;
     letter-spacing: 0.08em;
-    margin-left: 12px;
+    /* margin-left: 12px; */
+    margin-left: 1.7vw;
     opacity: 0;
 }
 
 .loading img {
     width: 5vw;
-    margin-right: 12px;
+    /* margin-right: 12px; */
     opacity: 0;
-    transform: translateX(200px);
+    /* transform: translateX(200px); */
+    transition: width 1s;
 }
 
 .loading-creator {
@@ -298,7 +308,7 @@ main {
     }
 
     .navigation-indicator-container {
-        display: none;
+        display: none!important;
     }
 
     .header-main-footer-container {

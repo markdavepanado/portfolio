@@ -1,7 +1,7 @@
 var loadingImg = document.getElementById("loading-img");
 var loadingText = document.getElementById("loading-text");
 var loaderContainer = document.getElementsByClassName("loader-container")[0];
-
+var loadingImgTextContainer = loaderContainer.getElementsByClassName("loading")[0];
 // HEADER CONTENT FOOTER COPYRIGHT
 var hmfContainer = document.getElementsByClassName("header-main-footer-container")[0];
 var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
@@ -29,19 +29,34 @@ function fadeinImg() {
 }
 
 function slideleftImg(){
-    var increment = 2;
-    var slideleft = getCurrentTranslateX(loadingImg);
+    var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,''));
+    var loaderContainerWidth = Math.round(loaderContainer.getBoundingClientRect().width) + bodyPaddingXaxis + bodyPaddingXaxis;
+    var translateXpixels = getCurrentTranslateX(loadingImgTextContainer);
+    var translateXpercentage = Math.round((translateXpixels / loaderContainerWidth) * 100);
+
+    // var increment = 2;
+    var increment = 0.2;
+    // var slideleft = getCurrentTranslateX(loadingImg);
+    var slideleft = translateXpercentage;
     
+    console.log("percentage: " + slideleft);
+    console.log("container width: " + loaderContainerWidth);
+    console.log("translateX in pixels: " + translateXpixels);
     var instance = window.setInterval(function() {
-        if(slideleft <= 0) {
+        // if(slideleft <= 0) {
+        if(slideleft < 0) {
+            loadingImg.style.width = "4vw";
             fadeinText();
             window.clearInterval(instance);
+            loadingImgTextContainer.style.transform = "translateX(" + 0 + "%)";
         } else {
-            loadingImg.style.transform = "translateX(" + slideleft + "px)";
+            // loadingImg.style.transform = "translateX(" + slideleft + "px)";
+            loadingImgTextContainer.style.transform = "translateX(" + slideleft + "%)";
+            console.log(slideleft)
             slideleft = slideleft - increment;
         }
         
-    }, 1)
+    }, 1);
 }
 
 function fadeinText() {
@@ -68,7 +83,8 @@ function spinImg() {
         loadingImg.style.transform = "rotate(" + slideleft + "deg)";
         slideleft = slideleft + increment;
         
-    }, 30);
+    // }, 30);
+    }, 20);
     
     setTimeout(function() {
         window.clearInterval(instance);
@@ -84,8 +100,11 @@ function fadeOutLoading() {
         if(opacity < 0) {
             clearInterval(instance);
             loaderContainer.style.display = "none";
+            loadingImg.style.width = "5vw";
             hmfContainer.style.cssText = 'display:initial !important';
-            navIndicatorContainer.style.cssText = 'display:flex !important';
+            if(window.screen.width > 768) {
+                navIndicatorContainer.style.cssText = 'display:flex !important';
+            }
             copyright.style.cssText = 'display:initial !important';
             highlightActiveMenu();
             onLoadInit();
