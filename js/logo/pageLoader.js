@@ -45,8 +45,10 @@ function slideleftImg(){
     var instance = window.setInterval(function() {
         // if(slideleft <= 0) {
         if(slideleft < 0) {
-            loadingImg.style.width = "4vw";
             fadeinText();
+            setTimeout(function() {
+                loadingImg.style.width = "4vw";
+            }, 500);
             window.clearInterval(instance);
             loadingImgTextContainer.style.transform = "translateX(" + 0 + "%)";
         } else {
@@ -64,7 +66,7 @@ function fadeinText() {
     var opacity = 0;
     var instance = window.setInterval(function() {
         if(opacity > 1) {
-            spinImg();
+            setTimeout(spinImg, 500);
             window.clearInterval(instance);
         } else {
             loadingText.style.opacity = opacity;
