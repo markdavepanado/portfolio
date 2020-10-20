@@ -153,7 +153,7 @@ function slideInMobileNavUL(){
             window.clearInterval(instance);
             fadeInLinks();
         } else {
-            
+            navMenuUL.style.height = "calc((100% - 20vh) - 20px)!important";
             navMenuUL.style.width = "calc(" + slideleft + "% - 40px)";
             slideleft = slideleft + increment;
         }
@@ -202,6 +202,7 @@ function slideOutMobileNavUL(){
             menuButton.style.pointerEvents = "auto";
             toggleClass(navigationMenu, "closing");
         } else {
+            navMenuUL.style.height = "calc((100% - 20vh) - 20px)!important";
             navMenuUL.style.width = "calc(" + slideleft + "% - 40px)";
             slideleft = slideleft - increment;
         }
@@ -216,6 +217,7 @@ window.addEventListener('resize', function(event){
             toggleClass(navigationMenu, 'open');
         }
     } else {
+        navMenuUL.style.height = "calc((100% - 20vh) - 20px)!important";
         navMenuUL.style.width = "calc(0% - 40px)";
         for(var i = 0; i<navMenuULanchorTags.length;i++){
             navMenuULanchorTags[i].style.opacity = 0;
