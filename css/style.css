@@ -327,10 +327,15 @@ main {
         overflow: auto;
     }
 
+    .navigation-menu {
+        transform: initial;
+    }
+
     .navigation-menu button {
         display: inline-block;
         position: fixed;
         top: calc((100% - 20vh) - 20px + (10vh + 10px))!important;
+        transform: translateX(100vw);
     }
 
     .navigation-menu.open button {
@@ -362,6 +367,7 @@ main {
 
     .navigation-menu.open ul, .navigation-menu.closing ul {
         display: flex!important;
+        height: calc((100% - 20vh) - 20px)!important;
     }
 
     .header-main-footer-container footer nav ul li a {

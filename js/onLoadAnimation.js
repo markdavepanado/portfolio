@@ -13,7 +13,7 @@ var hmfContainer = document.getElementsByClassName("header-main-footer-container
 var logoHeader = hmfContainer.getElementsByTagName("header")[0];
 
 var navMenu = hmfContainer.getElementsByTagName("footer")[0].getElementsByClassName("navigation-menu")[0];
-
+var navMenuButton = navMenu.getElementsByTagName("button")[0];
 var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
 
 var content = document.getElementById("content");
@@ -65,19 +65,20 @@ function slideLeftNavMenu() {
 }
 
 function slideLeftNavMenuMobile() {
-    var hmfContainerWidth = Math.round(hmfContainer.getBoundingClientRect().width);
-    var translateXpixels = getCurrentTranslateX(navMenu);
-    var translateXpercentage = Math.round((translateXpixels / hmfContainerWidth) * 100);
+    var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(document.body).paddingRight.replace(/\D/g,''));
+    var navMenuWidth = Math.round(navMenu.getBoundingClientRect().width) + bodyPaddingXaxis;
+    var translateXpixels = getCurrentTranslateX(navMenuButton);
+    var translateXpercentage = Math.round((translateXpixels / navMenuWidth) * 100);
     var decrement = 2;
     var value = translateXpercentage;
     var instance = window.setInterval(function() {
         if(value < 0) {
             window.clearInterval(instance);
-            navMenu.style.transform = "initial";
+            navMenuButton.style.transform = "initial";
             slideRightContent();
 
         } else {
-            navMenu.style.transform = "translateX(" + value +"%)";
+            navMenuButton.style.transform = "translateX(" + value +"%)";
             value = value - decrement;
         }
     }, 1);
