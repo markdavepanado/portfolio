@@ -136,7 +136,6 @@ function getCurrentTranslateX(element) {
         return translatexValue;
     }
     return 0;
-    // var elementStyle = window.getComputedStyle(element).getPropertyValue('transform');
     
 }
 function getCurrentTranslateY(element) {
@@ -152,7 +151,6 @@ function getCurrentTranslateY(element) {
         return translateyValue;
     }
     return 0;
-    // var elementStyle = window.getComputedStyle(element).getPropertyValue('transform');
     
 }
 

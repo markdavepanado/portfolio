@@ -2,7 +2,8 @@ var loadingImg = document.getElementById("loading-img");
 var loadingText = document.getElementById("loading-text");
 var loaderContainer = document.getElementsByClassName("loader-container")[0];
 var loadingImgTextContainer = loaderContainer.getElementsByClassName("loading")[0];
-// HEADER CONTENT FOOTER COPYRIGHT
+
+// HEADER CONTENT FOOTER COPYRIGHT VARIABLES
 var hmfContainer = document.getElementsByClassName("header-main-footer-container")[0];
 var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
 var copyright = document.getElementsByClassName("copyright-container")[0];
@@ -29,21 +30,18 @@ function fadeinImg() {
 }
 
 function slideleftImg(){
-    var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,''));
-    var loaderContainerWidth = Math.round(loaderContainer.getBoundingClientRect().width) + bodyPaddingXaxis + bodyPaddingXaxis;
+    var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(document.body).paddingRight.replace(/\D/g,''));
+    var loaderContainerWidth = Math.round(loaderContainer.getBoundingClientRect().width) + bodyPaddingXaxis;
     var translateXpixels = getCurrentTranslateX(loadingImgTextContainer);
     var translateXpercentage = Math.round((translateXpixels / loaderContainerWidth) * 100);
 
-    // var increment = 2;
     var increment = 0.2;
-    // var slideleft = getCurrentTranslateX(loadingImg);
     var slideleft = translateXpercentage;
     
     console.log("percentage: " + slideleft);
     console.log("container width: " + loaderContainerWidth);
     console.log("translateX in pixels: " + translateXpixels);
     var instance = window.setInterval(function() {
-        // if(slideleft <= 0) {
         if(slideleft < 0) {
             fadeinText();
             setTimeout(function() {
@@ -52,7 +50,6 @@ function slideleftImg(){
             window.clearInterval(instance);
             loadingImgTextContainer.style.transform = "translateX(" + 0 + "%)";
         } else {
-            // loadingImg.style.transform = "translateX(" + slideleft + "px)";
             loadingImgTextContainer.style.transform = "translateX(" + slideleft + "%)";
             console.log(slideleft)
             slideleft = slideleft - increment;
@@ -77,8 +74,6 @@ function fadeinText() {
 }
 
 function spinImg() {
-    
-    // var loadingImgStyle = window.getComputedStyle(loadingImg).getPropertyValue('transform');
     var increment = 10;
     var slideleft = getCurrentRotation(loadingImg);
     var instance = window.setInterval(function() {
@@ -116,7 +111,6 @@ function fadeOutLoading() {
             opacity = opacity - decrement;
         }
     }, 1);
-    // }, 10);
 }
 
 function getCurrentTranslateX(element) {
@@ -132,7 +126,6 @@ function getCurrentTranslateX(element) {
         return translatexValue;
     }
     return 0;
-    // var elementStyle = window.getComputedStyle(element).getPropertyValue('transform');
     
 }
 
@@ -151,7 +144,7 @@ function getCurrentRotation(element){
       b = values[1];
       angle = Math.round(Math.atan2(b,a) * (180/Math.PI));
       */
-      //return Math.round(Math.atan2(values[1],values[0]) * (180/Math.PI)); //this would return negative values the OP doesn't wants so it got commented and the next lines of code added
+      //return Math.round(Math.atan2(values[1],values[0]) * (180/Math.PI)); //this would return negative values
       var angle = Math.round(Math.atan2(values[1],values[0]) * (180/Math.PI));
       return (angle < 0 ? angle + 360 : angle); //adding 360 degrees here when angle < 0 is equivalent to adding (2 * Math.PI) radians before
     }

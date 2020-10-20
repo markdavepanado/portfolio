@@ -188,12 +188,12 @@ main {
 }
 
 .header-main-footer-container #content {
-    /* overflow: hidden; */
+    overflow: hidden;
     transform: translateX(-150%);
 }
 
 .header-main-footer-container #content:hover {
-    /* overflow: auto; */
+    overflow: auto;
 }
 
 
