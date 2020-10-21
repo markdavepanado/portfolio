@@ -1,4 +1,6 @@
 var main = document.getElementById("content");
+
+// NAVIGATION MENU
 var menuButton = document.getElementById("nav-menu-btn");
 var navigationMenu = document.getElementsByClassName("navigation-menu")[0];
 var navMenuUL = navigationMenu.getElementsByTagName("ul")[0];
@@ -11,12 +13,13 @@ var navigationIndicators = navigationDotContainer.getElementsByTagName("a");
 var currentNavPATH = './images/current-indicator.svg';
 var nextPrevPATH = './images/next-prev-indicator.svg';
 
-
 highlightActiveMenu();
   
 main.addEventListener('scroll', highlightActiveMenu);
+main.addEventListener('wheel', highlightActiveMenu);
+main.addEventListener('DOMMouseScroll', highlightActiveMenu);
+main.addEventListener('mousewheel', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
-
 
 function highlightActiveMenu() {
     let navigationLinks = document.querySelectorAll('nav ul li a');

@@ -115,7 +115,8 @@ function slideRightContent() {
     var instance = window.setInterval(function() {
         if(value > 0) {
             window.clearInterval(instance);
-            content.style.transform = "initial)";
+            content.style.transform = "initial";
+            scrollTouchInit();
         } else {
             content.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
