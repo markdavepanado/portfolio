@@ -276,21 +276,61 @@ body.error .header-main-footer-container main {
 }
 
 #errorMessage {
-position: fixed;
-top: calc(10vh + 45px);
-height: calc(100vh - (20vh + 90px));
-background-color: var(--base-color);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 1;
-font-size: 5vw;
-letter-spacing: 0.08em;
-font-weight: lighter;
-display: none;
+    position: fixed;
+    top: calc(10vh + 45px);
+    height: calc(100vh - (20vh + 90px));
+    background-color: var(--base-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: 5vw;
+    letter-spacing: 0.08em;
+    font-weight: lighter;
+    display: none;
+}
+
+/* Cursor */
+.typewriter-container {
+    text-align: center;
+}
+
+.typewriter-container > .typewriter {
+    border-right: 0.1rem solid var(--strong-color);
+    font-weight: lighter;
+    letter-spacing: 0.08em;
+    
+}
+
+.typewriter-container > .typewriter > b {
+    animation-name: fadeInTxt;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.typewriter-container > .typewriter.blink {
+    border-color: transparent;
+}
+
+@keyframes fadeInTxt {
+    0% {
+        font-size: 1em;
+    }
+
+    50% {
+        font-size: 1.2em;
+    }
+
+    100% {
+        font-size: 1em;
+    }
 }
 
 @media only screen and (min-width: 769px) {
+    .typewriter-container > .typewriter { 
+        font-size: 0.5em;
+    }
+    
     .header-main-footer-container footer nav ul li a {
         opacity: initial!important;
     }
@@ -313,6 +353,10 @@ display: none;
 }
 
 @media only screen and (max-width: 768px) {
+
+    .typewriter-container > .typewriter { 
+        font-size: 0.8em;
+    }
 
     body {
         padding: 10px 20px;

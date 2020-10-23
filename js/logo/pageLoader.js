@@ -78,11 +78,24 @@ function spinImg() {
         
     // }, 30);
     }, 20);
+
+    // Init On DOM Loaded
+    // document.addEventListener("DOMContentLoaded", doneLoading(instance));
+
+    // Init On DOM fully-Loaded including all dependent resources such as stylesheets and images
+    document.addEventListener("load", doneLoading(instance));
     
+    
+}
+
+function doneLoading(instance) {
     setTimeout(function() {
         window.clearInterval(instance);
         fadeOutLoading();
         loadingImg.style.transform = "none";
+        setTimeout(function() {
+            myTypeWriterInit();
+        }, 2000);
     }, 2000);
 }
 

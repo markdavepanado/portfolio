@@ -117,13 +117,14 @@ function slideRightContent() {
             window.clearInterval(instance);
             content.style.transform = "initial";
             scrollTouchInit();
+            // Init On DOM Load
+            // document.addEventListener("DOMContentLoaded", myTypeWriter);
         } else {
             content.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
         }
     }, 1);
 }
-
 
 function getCurrentTranslateX(element) {
     var elementStyle = window.getComputedStyle(element, null);
