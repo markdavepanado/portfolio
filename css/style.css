@@ -290,6 +290,8 @@ body.error .header-main-footer-container main {
     display: none;
 }
 
+/* >>>>> HOME */
+
 /* Cursor */
 .typewriter-container {
     text-align: center;
@@ -326,9 +328,16 @@ body.error .header-main-footer-container main {
     }
 }
 
+/* >>>>> ABOUT ME */
+
+.about-me-line-vertical {
+    width: 100%;
+    height: inherit;
+}
+
 @media only screen and (min-width: 769px) {
     .typewriter-container > .typewriter { 
-        font-size: 0.5em;
+        font-size: 0.4em;
     }
     
     .header-main-footer-container footer nav ul li a {

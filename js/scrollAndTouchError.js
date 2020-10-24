@@ -18,7 +18,8 @@ function checkOnHover() {
 }
 
 function checkOnScroll(e) {
-    checkTargetIfError("main", e.target.parentElement.tagName, "scroll");
+    checkTargetIfError("main", e.path, "Scroll");
+    
 }
 
 function scrollFinished() {
@@ -40,35 +41,35 @@ function checkSwipeEvent() {
 function handleGesure() {
     // Top Left
     if (touchendY < touchstartY && touchendX < touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // Top Right
     } else if (touchendY < touchstartY && touchendX > touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // Bottom Left
     } else if (touchendY > touchstartY && touchendX < touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // Bottom Right
     } else if (touchendY > touchstartY && touchendX > touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // left
     } else if (touchendX < touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // right
     } else if (touchendX > touchstartX) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // Top
     } else if (touchendY < touchstartY) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     // Bottom
     } else if (touchendY > touchstartY) {
-        checkTargetIfError("main", myElement, "swipe");
+        checkTargetIfError("main", myElement, "Swipe");
     }
 }
 
 window.addEventListener('touchstart', e => {
   touchstartX = e.changedTouches[0].screenX;
   touchstartY = e.changedTouches[0].screenY;
-  myElement = e.target.parentElement.tagName;
+  myElement = e.path;
 });
 
 window.addEventListener('touchend', e => {
@@ -81,36 +82,51 @@ window.addEventListener('touchend', e => {
 
 // ERROR SETTER
 function checkTargetIfError(target, element, event) {
-
+    
     if(window.screen.width > 768) {
-        if(element.toLowerCase() != target.toLowerCase()) {
-        document.body.className = "error";
-        errorMessage.style.display = "flex";
-        strongEvent.innerText = event;
         
-        clearError();
-        } else {
-            if(checkClass(document.body, 'error')) {
-                toggleClass(document.body, 'error');
+        var thereIsMain = false;
+        for(var i = 0; i < element.length - 1; i++) {
+            if(element[i].nodeName.toLowerCase() == target) {
+                thereIsMain = true;
             }
         }
 
+        if(!thereIsMain) {
+            document.body.className = "error";
+            errorMessage.style.display = "flex";
+            strongEvent.innerText = event;
+            
+            clearError();
+            } else {
+                if(checkClass(document.body, 'error')) {
+                    toggleClass(document.body, 'error');
+                }
+            }
+
     } else {
-        if(element.toLowerCase() != target.toLowerCase() 
-    && element.toLowerCase() != "svg" 
-    && element.toLowerCase() != "nav"
-    && element.toLowerCase() != "li"
-    && element.toLowerCase() != "ul") {
-        document.body.className = "error";
-        errorMessage.style.display = "flex";
-        strongEvent.innerText = event;
-        
-        clearError();
-    } else {
-        if(checkClass(document.body, 'error')) {
-            toggleClass(document.body, 'error');
+
+        var thereIsMain = false;
+        for(var i = 0; i < element.length - 1; i++) {
+            if(element[i].nodeName.toLowerCase() == target 
+            || element[i].nodeName.toLowerCase() == "svg"
+            || element[i].nodeName.toLowerCase() == "li" 
+            || element[i].nodeName.toLowerCase() == "ul") {
+                thereIsMain = true;
+            }
         }
-    }
+
+        if(!thereIsMain) {
+            document.body.className = "error";
+            errorMessage.style.display = "flex";
+            strongEvent.innerText = event;
+            
+            clearError();
+            } else {
+                if(checkClass(document.body, 'error')) {
+                    toggleClass(document.body, 'error');
+                }
+            }
     }
     
 }
