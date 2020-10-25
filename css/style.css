@@ -177,9 +177,9 @@ main {
 
 .header-main-footer-container main section.page {
     min-height: 100%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     font-size: 5vw;
 }
@@ -292,6 +292,10 @@ body.error .header-main-footer-container main {
 
 /* >>>>> HOME */
 
+#home {
+    align-items: center;
+}
+
 /* Cursor */
 .typewriter-container {
     text-align: center;
@@ -332,13 +336,102 @@ body.error .header-main-footer-container main {
 
 .about-me-line-vertical {
     width: 100%;
-    height: inherit;
+    min-height: calc(100vh - 20vh);
+    border-left: 2px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.line-horizontal {
+    background-color: var(--primary-color);
+    height: 2px;
+    width: 3vw;
+    margin-right: 20px;
+}
+
+.personal-details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.personal-details img {
+    /* padding: 0 20px; */
+    max-height: 20vh;
+}
+
+.personal-information {
+    height: inherit;
+    line-height: 0.36em;
+    padding: 0 20px;
+}
+
+.personal-information h1 {
+    font-size: 0.4em;
+    letter-spacing: 0.02em;
+}
+
+.personal-information p:first-of-type {
+    margin-top: 0.5em;
+
+}
+
+.personal-information p {
+    font-size: 0.25em;
+    letter-spacing: 0.02em;
+}
+
+.award-details,
+.program-details {
+    min-height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* .program-details {
+    margin-bottom: 40px;
+} */
+
+.award-information,
+.program-information {
+    line-height: 0.24em;
+}
+
+.award-information h2,
+.program-information h2 {
+    font-size: 0.22em;
+    align-items: center;
+    display: flex;
+}
+
+.award-information svg,
+.program-information svg {
+    width: 2em;
+    margin-left: 4px;
+}
+
+.award-information p:first-of-type,
+.program-information p:first-of-type {
+    margin-top: 5px;
+}
+
+.award-information p:last-of-type,
+.program-information p:last-of-type {
+    font-size: 0.15em;
+}
+
+.award-information p,
+.program-information p {
+    font-size: 0.17em;
+    font-weight: 300;
+}
+
+
 @media only screen and (min-width: 769px) {
-    .typewriter-container > .typewriter { 
-        font-size: 0.4em;
-    }
     
     .header-main-footer-container footer nav ul li a {
         opacity: initial!important;
@@ -352,6 +445,46 @@ body.error .header-main-footer-container main {
         transform: translateY(-150%);
     }
 
+    .typewriter-container > .typewriter { 
+        font-size: 0.4em;
+    }
+
+    .personal-details img {
+        max-height: 20vh;
+    }
+
+    .personal-information {
+        line-height: 0.36em;
+    }
+
+    .personal-information h1 {
+        font-size: 0.4em;
+    }
+
+    .personal-information p {
+        font-size: 0.25em;
+    }
+
+    .line-horizontal {
+        margin-right: 20px;
+    }
+
+    .award-information, .program-information {
+        line-height: 0.24em;
+    }
+
+    .award-information h2, .program-information h2 {
+        font-size: 0.22em;
+    }
+
+    .award-information p, .program-information p {
+        font-size: 0.17em;
+    }
+
+    .award-information p:last-of-type, .program-information p:last-of-type {
+        font-size: 0.15em;
+    }
+
     .copyright-container {
         border-radius: 5px 0 0 0;
     }
@@ -362,10 +495,6 @@ body.error .header-main-footer-container main {
 }
 
 @media only screen and (max-width: 768px) {
-
-    .typewriter-container > .typewriter { 
-        font-size: 0.8em;
-    }
 
     body {
         padding: 10px 20px;
@@ -438,6 +567,50 @@ body.error .header-main-footer-container main {
 
     .header-main-footer-container footer nav ul li:hover a {
         background-color:var(--primary-color);
+    }
+
+    .typewriter-container > .typewriter { 
+        font-size: 0.8em;
+    }
+
+    .personal-details img {
+        max-height: 10vh;
+    }
+
+    .personal-information {
+        line-height: 0.66em;
+    }
+
+    .personal-information h1 {
+        font-size: 0.6em;
+    }
+
+    .personal-information p {
+        font-size: 0.45em;
+    }
+
+    .line-horizontal {
+        margin-right: 10px;
+    }
+
+    .award-information, .program-information {
+        line-height: 0.54em;
+    }
+
+    .award-information h2, .program-information h2 {
+        font-size: 0.42em;
+    }
+
+    .award-information p, .program-information p {
+        font-size: 0.37em;
+    }
+
+    .award-information p:first-of-type, .program-information p:first-of-type {
+        margin: 0;
+    }
+
+    .award-information p:last-of-type, .program-information p:last-of-type {
+        font-size: 0.35em;
     }
 
     .copyright-container {
