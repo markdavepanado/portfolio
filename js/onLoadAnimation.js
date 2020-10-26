@@ -118,7 +118,7 @@ function slideRightContent() {
             content.style.transform = "initial";
             scrollTouchInit();
             // Init On DOM Load
-            // document.addEventListener("DOMContentLoaded", myTypeWriter);
+            // document.addEventListener("DOMContentLoaded", myTypeWriterInit);
         } else {
             content.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
@@ -141,6 +141,7 @@ function getCurrentTranslateX(element) {
     return 0;
     
 }
+
 function getCurrentTranslateY(element) {
     var elementStyle = window.getComputedStyle(element, null);
     var hasTransform = elementStyle.getPropertyValue("-webkit-transform") ||
@@ -159,6 +160,6 @@ function getCurrentTranslateY(element) {
 
 // CODE FOR RESIZE
 
-// window.addEventListener('resize', function(event){
-//     location.reload();
-// });
+window.addEventListener('resize', function(event){
+    location.reload();
+});

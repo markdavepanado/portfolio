@@ -334,6 +334,10 @@ body.error .header-main-footer-container main {
 
 /* >>>>> ABOUT ME */
 
+#aboutme {
+    overflow: hidden;
+}
+
 .about-me-line-vertical {
     width: 100%;
     min-height: calc(100vh - 20vh);
@@ -341,6 +345,7 @@ body.error .header-main-footer-container main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: translateY(110%);
 }
 
 .line-horizontal {
@@ -348,6 +353,7 @@ body.error .header-main-footer-container main {
     height: 2px;
     width: 3vw;
     margin-right: 20px;
+    transform: translateX(-110%);
 }
 
 .personal-details {
@@ -360,12 +366,14 @@ body.error .header-main-footer-container main {
 .personal-details img {
     /* padding: 0 20px; */
     max-height: 20vh;
+    opacity: 0;
 }
 
 .personal-information {
     height: inherit;
     line-height: 0.36em;
     padding: 0 20px;
+    transform: translateX(100vw);
 }
 
 .personal-information h1 {
@@ -399,6 +407,7 @@ body.error .header-main-footer-container main {
 .award-information,
 .program-information {
     line-height: 0.24em;
+    opacity: 0;
 }
 
 .award-information h2,

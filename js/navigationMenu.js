@@ -13,6 +13,11 @@ var navigationIndicators = navigationDotContainer.getElementsByTagName("a");
 var currentNavPATH = './images/current-indicator.svg';
 var nextPrevPATH = './images/next-prev-indicator.svg';
 
+var suvlAnimaCounter = 0;
+var personalAnimaCounter = 0;
+
+var offsetHalf = .65;
+
 highlightActiveMenu();
   
 main.addEventListener('scroll', highlightActiveMenu);
@@ -21,14 +26,66 @@ main.addEventListener('DOMMouseScroll', highlightActiveMenu);
 main.addEventListener('mousewheel', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
 
+
+function suvlAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var aboutMeOffSetTop = aboutMe.offsetTop;
+    var aboutMeOffSetTopHalf = aboutMeOffSetTop * offsetHalf;
+    var aboutMeOffSetHeight = aboutMe.offsetHeight;
+
+        if(
+            aboutMeOffSetTopHalf <= fromTop && 
+            (aboutMeOffSetTop + aboutMeOffSetHeight) > fromTop
+        ) {
+            suvlAnimaCounter++;
+        } else {
+            suvlAnimaCounter = 0
+        }
+        
+        if(suvlAnimaCounter == 1) {
+            slideUpVLine();
+            setTimeout(function() {
+                personaldAnima();
+            }, 600);
+        } else if(suvlAnimaCounter == 0) {
+            clearSlideUpVLine();
+        }
+}
+
+function personaldAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    if(suvlAnimaCounter > 0) {
+        if(
+            (personalDetails.offsetTop * offsetHalf) <= fromTop && 
+            (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
+        ) {
+            personalAnimaCounter++;
+            
+        } else {
+            personalAnimaCounter = 0;
+        }
+    
+        if(personalAnimaCounter == 1) {
+            slideRightFLhorizontal();
+        } else if (personalAnimaCounter == 0) {
+            clearPersonalDetails();
+            console.log("tanggal");
+        }
+    }
+
+}
+
 function highlightActiveMenu() {
     let navigationLinks = document.querySelectorAll('nav ul li a');
     let fromTop = main.scrollTop + main.offsetTop + 5;
     counter = 0;
 
+    suvlAnima();
+    personaldAnima();
+
+
     navigationLinks.forEach(link => {
         let section = document.querySelector('#'+ link.href.split("#")[1] || "");
-
         if(
             section.offsetTop <= fromTop &&
             section.offsetTop + section.offsetHeight > fromTop
