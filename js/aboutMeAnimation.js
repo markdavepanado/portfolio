@@ -3,15 +3,9 @@ var amLineVertical = document.getElementsByClassName("about-me-line-vertical")[0
 var personalInformation = document.getElementsByClassName("personal-information")[0];
 var personalDetails = document.getElementsByClassName("personal-details")[0];
 var pdImg = personalDetails.getElementsByTagName("img")[0];
-
 var firstLineHorizontal = personalDetails.getElementsByClassName("line-horizontal")[0];
-
-var programDetails = document.getElementsByClassName("program-details")[0];
-var pdLineHorizontal = programDetails.getElementsByClassName("line-horizontal")[0];
-var programInformation = programDetails.getElementsByClassName("program-information")[0];
-var awardDetails = document.getElementsByClassName("award-details")[0];
-var adLineHorizontal = awardDetails.getElementsByClassName("line-horizontal")[0];
-var awardInformation = awardDetails.getElementsByClassName("award-information")[0];
+var awardDetails = Array.from(document.getElementsByClassName("award-details"));
+var programDetails = Array.from(document.getElementsByClassName("program-details"));
 
 function slideUpVLine() {
     amLineVertical.style.transition = "initial";
@@ -111,7 +105,8 @@ function clearPersonalDetails() {
     personalInformation.style.transform = "translateX(100vw)";
 }
 
-function slideRightPDLineHorizontal() {
+function slideRightPDLineHorizontal(element) {
+    var pdLineHorizontal = element.getElementsByClassName("line-horizontal")[0];
     pdLineHorizontal.style.transition = "initial";
     var pdLineHorizontalWidth = Math.round(pdLineHorizontal.getBoundingClientRect().width);
     var translateXpixels = getCurrentTranslateX(pdLineHorizontal);
@@ -124,15 +119,16 @@ function slideRightPDLineHorizontal() {
         if(value > 0) {
             window.clearInterval(instance);
             pdLineHorizontal.style.transform = "initial";
-            fadeInProgramInformation();
+            fadeInProgramInformation(element);
         } else {
             pdLineHorizontal.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
         }
-    }, 1);
+    }, 5);
 }
 
-function fadeInProgramInformation() {
+function fadeInProgramInformation(element) {
+    var programInformation = element.getElementsByClassName("program-information")[0];
     programInformation.style.transition = "initial";
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(programInformation).getPropertyValue("opacity"));
@@ -148,17 +144,19 @@ function fadeInProgramInformation() {
     }, 1);
 }
 
-function clearProgramDetails() {
-    pdLineHorizontal.style.transition = "all 500ms";
-    programInformation.style.transition = "all 250ms";
-    pdLineHorizontal.style.transform = "translateX(-110%)";
-    programInformation.style.opacity = "0";
+function clearProgramDetails(element) {
+    element.getElementsByClassName("line-horizontal")[0].style.transition = "all 500ms";
+    element.getElementsByClassName("program-information")[0].style.transition = "all 250ms";
+    element.getElementsByClassName("line-horizontal")[0].style.transform = "translateX(-110%)";
+    element.getElementsByClassName("program-information")[0].style.opacity = "0";
 }
 
-function slideRightADLineHorizontal() {
+function slideRightADLineHorizontal(element) {
+    var adLineHorizontal = element.getElementsByClassName("line-horizontal")[0];
+    adLineHorizontal.style.transition = "initial";
     var adLineHorizontalWidth = Math.round(adLineHorizontal.getBoundingClientRect().width);
     var translateXpixels = getCurrentTranslateX(adLineHorizontal);
-    var translateXpercentage = Math.round((translateXpixels / adLineHorizontalWidth) * 100) + 1;
+    var translateXpercentage = Math.round((translateXpixels / adLineHorizontalWidth) * 100);
 
     var decrement = 2;
     var value = translateXpercentage;
@@ -167,15 +165,17 @@ function slideRightADLineHorizontal() {
         if(value > 0) {
             window.clearInterval(instance);
             adLineHorizontal.style.transform = "initial";
-            fadeInAwardInformation();
+            fadeInAwardInformation(element);
         } else {
             adLineHorizontal.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
         }
-    }, 1);
+    }, 5);
 }
 
-function fadeInAwardInformation() {
+function fadeInAwardInformation(element) {
+    var awardInformation = element.getElementsByClassName("award-information")[0];
+    awardInformation.style.transition = "initial";
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(awardInformation).getPropertyValue("opacity"));
     var instance = window.setInterval(function() {
@@ -188,6 +188,13 @@ function fadeInAwardInformation() {
             value = value + increment;
         }
     }, 1);
+}
+
+function clearAwardDetails(element) {
+    element.getElementsByClassName("line-horizontal")[0].style.transition = "all 500ms";
+    element.getElementsByClassName("award-information")[0].style.transition = "all 250ms";
+    element.getElementsByClassName("line-horizontal")[0].style.transform = "translateX(-110%)";
+    element.getElementsByClassName("award-information")[0].style.opacity = "0";
 }
 
 function getCurrentTranslateX(element) {

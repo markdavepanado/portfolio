@@ -642,3 +642,8 @@ body.error .header-main-footer-container main {
     }
 
 }
+
+/* TEMPORARY */
+#workexperience, #skills, #hireme {
+    align-items: center;
+}

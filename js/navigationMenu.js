@@ -15,9 +15,19 @@ var nextPrevPATH = './images/next-prev-indicator.svg';
 
 var suvlAnimaCounter = 0;
 var personalAnimaCounter = 0;
-var programAnimaCounter = 0;
+var programAnimaCounter = [];
+var awardAnimaCounter = [];
+for(var pac = 0; pac < awardDetails.length; pac++){
+    programAnimaCounter[pac] = 0;
+}
+for(var aac = 0; aac < awardDetails.length; aac++){
+    awardAnimaCounter[aac] = 0;
+}
+
+
 
 var offsetHalf = .60;
+
 
 highlightActiveMenu();
   
@@ -26,6 +36,7 @@ main.addEventListener('wheel', highlightActiveMenu);
 main.addEventListener('DOMMouseScroll', highlightActiveMenu);
 main.addEventListener('mousewheel', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
+
 
 
 function suvlAnima() {
@@ -67,7 +78,6 @@ function personaldAnima() {
     var personalDetailsOffSetTop = personalDetails.offsetTop;
     var advancePDoffSetTopHalf = (aboutMe.offsetTop + personalDetailsOffSetTop) * offsetHalf;
     var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight - getPaddingTop(personalDetails);
-    console.log(personalDetailsOffSetTop);
         if(
             advancePDoffSetTopHalf <= fromTop && advancePDoffSetTopHeight > fromTop
         ) {
@@ -84,25 +94,47 @@ function personaldAnima() {
         }
 }
 
-function programdAnima() {
+function programdAnima(element, index) {
     let fromTop = main.scrollTop + main.offsetTop + 5;
-    var programDetailsOffSetTop = programDetails.offsetTop;
+    var programDetailsOffSetTop = element.offsetTop;
     var advanceProgramDoffSetTopHalf = (aboutMe.offsetTop + programDetailsOffSetTop) * offsetHalf;
     var advanceProgramDoffSetTopHeight = aboutMe.offsetTop + programDetailsOffSetTop;
-    console.log(programDetailsOffSetTop);
         if(
             advanceProgramDoffSetTopHalf <= fromTop && advanceProgramDoffSetTopHeight > fromTop
         ) {
-            programAnimaCounter++;
+            programAnimaCounter[index]++;
             
         } else {
-            programAnimaCounter = 0;
+            programAnimaCounter[index] = 0;
         }
 
-        if(programAnimaCounter == 1) {
-            slideRightPDLineHorizontal();
-        } else if (programAnimaCounter == 0) {
-            clearProgramDetails();
+        if(programAnimaCounter[index] == 1) {
+            slideRightPDLineHorizontal(element);
+        } else if (programAnimaCounter[index] == 0) {
+            clearProgramDetails(element);
+        }
+}
+
+function awarddAnima(element, index) {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var awardDetailsOffSetTop = element.offsetTop;
+    var advanceAwardDoffSetTopHalf = (aboutMe.offsetTop + awardDetailsOffSetTop) * offsetHalf;
+    var advanceAwardDoffSetTopHeight = aboutMe.offsetTop + awardDetailsOffSetTop;
+
+        if(
+            advanceAwardDoffSetTopHalf <= fromTop && advanceAwardDoffSetTopHeight > fromTop
+        ) {
+            awardAnimaCounter[index]++;
+            
+            
+        } else {
+            awardAnimaCounter[index] = 0;
+        }
+
+        if(awardAnimaCounter[index] == 1) {
+            slideRightADLineHorizontal(element);
+        } else if (awardAnimaCounter[index] == 0) {
+            clearAwardDetails(element)
         }
 }
 
@@ -113,7 +145,13 @@ function highlightActiveMenu() {
 
     suvlAnima();
     personaldAnima();
-    programdAnima();
+
+    for(var i = 0; i < programDetails.length; i++) {
+        programdAnima(programDetails[i], i);
+    }
+    for(var a = 0; a < awardDetails.length; a++) {
+        awarddAnima(awardDetails[a], a);
+    }
     
     navigationLinks.forEach(link => {
         let section = document.querySelector('#'+ link.href.split("#")[1] || "");
