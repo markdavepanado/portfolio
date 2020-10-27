@@ -18,6 +18,9 @@ var personalAnimaCounter = 0;
 
 var offsetHalf = .65;
 
+var personalDetailsOffSetTop = document.getElementsByClassName("personal-details")[0].offsetTop;
+
+
 highlightActiveMenu();
   
 main.addEventListener('scroll', highlightActiveMenu);
@@ -44,34 +47,40 @@ function suvlAnima() {
         
         if(suvlAnimaCounter == 1) {
             slideUpVLine();
-            setTimeout(function() {
-                personaldAnima();
-            }, 600);
+            // window.setTimeout(function() {
+            //     personaldAnima();
+            // }, 1000);
         } else if(suvlAnimaCounter == 0) {
             clearSlideUpVLine();
         }
 }
 
 function personaldAnima() {
+
     let fromTop = main.scrollTop + main.offsetTop + 5;
-    if(suvlAnimaCounter > 0) {
+    var advancePDoffSetTopHalf = (aboutMe.offsetTop + personalDetailsOffSetTop) * offsetHalf;
+    var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight;
+        // if(
+        //     (personalDetails.offsetTop * offsetHalf) <= fromTop && 
+        //     (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
+        // ) {
         if(
-            (personalDetails.offsetTop * offsetHalf) <= fromTop && 
-            (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
+            advancePDoffSetTopHalf <= fromTop && advancePDoffSetTopHeight > fromTop
+            // (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
         ) {
             personalAnimaCounter++;
             
         } else {
             personalAnimaCounter = 0;
         }
-    
+
         if(personalAnimaCounter == 1) {
-            slideRightFLhorizontal();
+            setTimeout(slideRightFLhorizontal, 500);
         } else if (personalAnimaCounter == 0) {
             clearPersonalDetails();
-            console.log("tanggal");
         }
-    }
+
+        
 
 }
 
@@ -82,6 +91,7 @@ function highlightActiveMenu() {
 
     suvlAnima();
     personaldAnima();
+    
 
 
     navigationLinks.forEach(link => {

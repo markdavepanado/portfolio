@@ -39,7 +39,7 @@ function slideUpVLine() {
     }, 1);
 }
 function slideDownVLine() {
-    amLineVertical.style.transition = "all 1s";
+    amLineVertical.style.transition = "all 3s";
     amLineVertical.style.transform = "translateY(110%)";
 }
 
@@ -48,6 +48,7 @@ function clearSlideUpVLine() {
 }
 
 function slideRightFLhorizontal() {
+    firstLineHorizontal.style.transition = "initial";
     var firstLineHorizontalWidth = Math.round(firstLineHorizontal.getBoundingClientRect().width);
     var translateXpixels = getCurrentTranslateX(firstLineHorizontal);
     var translateXpercentage = Math.round((translateXpixels / firstLineHorizontalWidth) * 100) + 1;
@@ -68,6 +69,7 @@ function slideRightFLhorizontal() {
 }
 
 function fadeInImg() {
+    pdImg.style.transition = "initial";
     var increment = 0.02;
     var value = parseFloat(window.getComputedStyle(pdImg).getPropertyValue("opacity"));
     var instance = window.setInterval(function() {
@@ -84,6 +86,7 @@ function fadeInImg() {
 }
 
 function slideLeftPI() {
+    personalInformation.style.transition = "initial";
     var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(document.body).paddingRight.replace(/\D/g,''));
     var piPaddingXaxis = parseFloat(window.getComputedStyle(personalInformation).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(personalInformation).paddingRight.replace(/\D/g,''));
     var personalDetailsWidth = Math.round(personalDetails.getBoundingClientRect().width) + bodyPaddingXaxis + Math.round(pdImg.getBoundingClientRect().width) + piPaddingXaxis;
@@ -105,6 +108,9 @@ function slideLeftPI() {
 }
 
 function clearPersonalDetails() {
+    firstLineHorizontal.style.transition = "all 500ms";
+    pdImg.style.transition = "all 250ms";
+    personalInformation.style.transition = "all 100ms";
     firstLineHorizontal.style.transform = "translateX(-110%)";
     pdImg.style.opacity = "0";
     personalInformation.style.transform = "translateX(100vw)";
