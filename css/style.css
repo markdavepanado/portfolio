@@ -368,8 +368,7 @@ body.error .header-main-footer-container main {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
-    padding-top: 45px;
+    /* margin-bottom: 40px; */
 }
 
 .personal-details img {
@@ -460,6 +459,10 @@ body.error .header-main-footer-container main {
 
     .typewriter-container > .typewriter { 
         font-size: 0.4em;
+    }
+
+    .personal-details {
+        padding: 45px 0;
     }
 
     .personal-details img {
@@ -584,6 +587,10 @@ body.error .header-main-footer-container main {
 
     .typewriter-container > .typewriter { 
         font-size: 0.8em;
+    }
+
+    .personal-details {
+        padding: 20px 0;
     }
 
     .personal-details img {

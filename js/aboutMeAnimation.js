@@ -112,6 +112,7 @@ function clearPersonalDetails() {
 }
 
 function slideRightPDLineHorizontal() {
+    pdLineHorizontal.style.transition = "initial";
     var pdLineHorizontalWidth = Math.round(pdLineHorizontal.getBoundingClientRect().width);
     var translateXpixels = getCurrentTranslateX(pdLineHorizontal);
     var translateXpercentage = Math.round((translateXpixels / pdLineHorizontalWidth) * 100) + 1;
@@ -132,6 +133,7 @@ function slideRightPDLineHorizontal() {
 }
 
 function fadeInProgramInformation() {
+    programInformation.style.transition = "initial";
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(programInformation).getPropertyValue("opacity"));
     var instance = window.setInterval(function() {
@@ -144,6 +146,13 @@ function fadeInProgramInformation() {
             value = value + increment;
         }
     }, 1);
+}
+
+function clearProgramDetails() {
+    pdLineHorizontal.style.transition = "all 500ms";
+    programInformation.style.transition = "all 250ms";
+    pdLineHorizontal.style.transform = "translateX(-110%)";
+    programInformation.style.opacity = "0";
 }
 
 function slideRightADLineHorizontal() {

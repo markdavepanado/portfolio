@@ -15,11 +15,9 @@ var nextPrevPATH = './images/next-prev-indicator.svg';
 
 var suvlAnimaCounter = 0;
 var personalAnimaCounter = 0;
+var programAnimaCounter = 0;
 
-var offsetHalf = .65;
-
-var personalDetailsOffSetTop = document.getElementsByClassName("personal-details")[0].offsetTop;
-
+var offsetHalf = .60;
 
 highlightActiveMenu();
   
@@ -66,8 +64,10 @@ function getPaddingTop(element) {
 
 function personaldAnima() {
     let fromTop = main.scrollTop + main.offsetTop + 5;
+    var personalDetailsOffSetTop = personalDetails.offsetTop;
     var advancePDoffSetTopHalf = (aboutMe.offsetTop + personalDetailsOffSetTop) * offsetHalf;
-    var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight;
+    var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight - getPaddingTop(personalDetails);
+    console.log(personalDetailsOffSetTop);
         if(
             advancePDoffSetTopHalf <= fromTop && advancePDoffSetTopHeight > fromTop
         ) {
@@ -82,9 +82,28 @@ function personaldAnima() {
         } else if (personalAnimaCounter == 0) {
             clearPersonalDetails();
         }
+}
 
-        
+function programdAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var programDetailsOffSetTop = programDetails.offsetTop;
+    var advanceProgramDoffSetTopHalf = (aboutMe.offsetTop + programDetailsOffSetTop) * offsetHalf;
+    var advanceProgramDoffSetTopHeight = aboutMe.offsetTop + programDetailsOffSetTop;
+    console.log(programDetailsOffSetTop);
+        if(
+            advanceProgramDoffSetTopHalf <= fromTop && advanceProgramDoffSetTopHeight > fromTop
+        ) {
+            programAnimaCounter++;
+            
+        } else {
+            programAnimaCounter = 0;
+        }
 
+        if(programAnimaCounter == 1) {
+            slideRightPDLineHorizontal();
+        } else if (programAnimaCounter == 0) {
+            clearProgramDetails();
+        }
 }
 
 function highlightActiveMenu() {
@@ -94,6 +113,7 @@ function highlightActiveMenu() {
 
     suvlAnima();
     personaldAnima();
+    programdAnima();
     
     navigationLinks.forEach(link => {
         let section = document.querySelector('#'+ link.href.split("#")[1] || "");
