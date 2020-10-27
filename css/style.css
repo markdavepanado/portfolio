@@ -271,7 +271,6 @@ body.error {
 }
 
 body.error .header-main-footer-container main {
-    /* background: hsl(0, 100%, 95%); */
     background-color: var(--base-color);
 }
 
@@ -361,10 +360,10 @@ body.error .header-main-footer-container main {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
+    padding-top: 45px;
 }
 
 .personal-details img {
-    /* padding: 0 20px; */
     max-height: 20vh;
     opacity: 0;
 }
@@ -399,10 +398,6 @@ body.error .header-main-footer-container main {
     align-items: center;
     margin-bottom: 15px;
 }
-
-/* .program-details {
-    margin-bottom: 40px;
-} */
 
 .award-information,
 .program-information {

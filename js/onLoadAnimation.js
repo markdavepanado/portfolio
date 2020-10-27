@@ -117,8 +117,6 @@ function slideRightContent() {
             window.clearInterval(instance);
             content.style.transform = "initial";
             scrollTouchInit();
-            // Init On DOM Load
-            // document.addEventListener("DOMContentLoaded", myTypeWriterInit);
         } else {
             content.style.transform = "translateX(" + value + "%)";
             value = value + decrement;

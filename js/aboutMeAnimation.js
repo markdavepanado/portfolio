@@ -13,11 +13,6 @@ var awardDetails = document.getElementsByClassName("award-details")[0];
 var adLineHorizontal = awardDetails.getElementsByClassName("line-horizontal")[0];
 var awardInformation = awardDetails.getElementsByClassName("award-information")[0];
 
-// aboutMeInit();
-// function aboutMeInit() {
-//     setTimeout(slideUpVLine, 5000);
-// }
-
 function slideUpVLine() {
     amLineVertical.style.transition = "initial";
     var aboutMeHeight = Math.round(aboutMe.getBoundingClientRect().height);
@@ -110,7 +105,7 @@ function slideLeftPI() {
 function clearPersonalDetails() {
     firstLineHorizontal.style.transition = "all 500ms";
     pdImg.style.transition = "all 250ms";
-    personalInformation.style.transition = "all 100ms";
+    personalInformation.style.transition = "all 250ms";
     firstLineHorizontal.style.transform = "translateX(-110%)";
     pdImg.style.opacity = "0";
     personalInformation.style.transform = "translateX(100vw)";

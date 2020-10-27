@@ -76,7 +76,6 @@ function spinImg() {
         loadingImg.style.transform = "rotate(" + slideleft + "deg)";
         slideleft = slideleft + increment;
         
-    // }, 30);
     }, 20);
 
     // Init On DOM Loaded

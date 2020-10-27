@@ -47,26 +47,29 @@ function suvlAnima() {
         
         if(suvlAnimaCounter == 1) {
             slideUpVLine();
-            // window.setTimeout(function() {
-            //     personaldAnima();
-            // }, 1000);
         } else if(suvlAnimaCounter == 0) {
             clearSlideUpVLine();
         }
 }
 
-function personaldAnima() {
+function getPaddingXaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingRight.replace(/\D/g,''));
+}
 
+function getPaddingYaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingBottom.replace(/\D/g,''));
+}
+
+function getPaddingTop(element) {
+    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,''));
+}
+
+function personaldAnima() {
     let fromTop = main.scrollTop + main.offsetTop + 5;
     var advancePDoffSetTopHalf = (aboutMe.offsetTop + personalDetailsOffSetTop) * offsetHalf;
     var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight;
-        // if(
-        //     (personalDetails.offsetTop * offsetHalf) <= fromTop && 
-        //     (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
-        // ) {
         if(
             advancePDoffSetTopHalf <= fromTop && advancePDoffSetTopHeight > fromTop
-            // (personalDetails.offsetTop + personalDetails.offsetHeight) > fromTop
         ) {
             personalAnimaCounter++;
             
@@ -92,22 +95,17 @@ function highlightActiveMenu() {
     suvlAnima();
     personaldAnima();
     
-
-
     navigationLinks.forEach(link => {
         let section = document.querySelector('#'+ link.href.split("#")[1] || "");
         if(
             section.offsetTop <= fromTop &&
             section.offsetTop + section.offsetHeight > fromTop
         ) {
-            // link.classList.add('active');
             link.className = "active";
         } else {
-            // link.classList.remove('active');
            link.className = link.className.replace(/(?:^|\s)active(?!\S)/g , '');
         }
 
-        // if(link.classList.contains("active")) {
         if(checkClass(link, 'active')) {
 
             if(counter == 0) {
@@ -193,7 +191,6 @@ function toggleMenuMobile() {
     if(checkClass(navigationMenu, 'open')) {
         slideInMobileNavUL();
     } else {
-        // navigationMenu.className += " closing";
         toggleClass(navigationMenu, "closing");
         fadeOutLinks();
     }
@@ -231,7 +228,6 @@ function slideInMobileNavUL(){
 }
 
 function fadeInLinks() {
-    // var increment = 0.01;
     var increment = 1;
     var value = 0;
 
@@ -261,7 +257,6 @@ function fadeOutLinks() {
 
 function slideOutMobileNavUL(){
     var increment = 1;
-    // var slideleft = getCurrentTranslateX(navMenuUL);
     var slideleft = 100;
     
     var instance = window.setInterval(function() {
@@ -280,7 +275,6 @@ function slideOutMobileNavUL(){
 
 window.addEventListener('resize', function(event){
     if(window.screen.width > 768) {
-        // navigationMenu.className.replace(/(?:^|\s)open(?!\S)/g , '');
         if(checkClass(navigationMenu, 'open')) {
             toggleClass(navigationMenu, 'open');
         }

@@ -27,7 +27,6 @@ TypeWriter.prototype.type = function() {
     this.txtElement.innerHTML = `<span class="typewriter">${this.txt}</span>`;
 
     // Initial Type Speed
-    // let typeSpeed = 100;
     let typeSpeed = 50;
 
     if (this.isDeleting) {
@@ -52,15 +51,10 @@ TypeWriter.prototype.type = function() {
     setTimeout(() => this.type(), typeSpeed);
 };
 
-// // Init On DOM Load
-// document.addEventListener("DOMContentLoaded", myTypeWriterInit);
-
 //Init App
 function myTypeWriterInit() {
     const txtElement = document.querySelector(".typewriter-container");
-    // const words = JSON.parse(txtElement.getAttribute("data-words"));
     const words = ["<b>Simple</b> is the hardest to achieve<b>.</b>", "This is pure <b>HTML</b>, <b>CSS</b> and <b>Javascript</b>", "<b>Scroll down</b> for more info<b>!</b>"];
-    // const wait = txtElement.getAttribute("data-wait");
     const wait = 3000;
 
     //Init TypeWriter
