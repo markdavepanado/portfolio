@@ -17,6 +17,7 @@ var suvlAnimaCounter = 0;
 var personalAnimaCounter = 0;
 var programAnimaCounter = [];
 var awardAnimaCounter = [];
+
 for(var pac = 0; pac < awardDetails.length; pac++){
     programAnimaCounter[pac] = 0;
 }
@@ -24,17 +25,10 @@ for(var aac = 0; aac < awardDetails.length; aac++){
     awardAnimaCounter[aac] = 0;
 }
 
-
-
 var offsetHalf = .60;
 
-
 highlightActiveMenu();
-  
-main.addEventListener('scroll', highlightActiveMenu);
-main.addEventListener('wheel', highlightActiveMenu);
-main.addEventListener('DOMMouseScroll', highlightActiveMenu);
-main.addEventListener('mousewheel', highlightActiveMenu);
+main.addEventListener('scroll' || 'wheel' || 'DOMMouseScroll' || 'mousewheel', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
 
 

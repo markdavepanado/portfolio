@@ -18,7 +18,8 @@ function checkOnHover() {
 }
 
 function checkOnScroll(e) {
-    checkTargetIfError("main", e.path, "Scroll");
+    var path = e.path || (e.composedPath && e.composedPath());
+    checkTargetIfError("main", path, "Scroll");
     
 }
 
@@ -69,7 +70,8 @@ function handleGesure() {
 window.addEventListener('touchstart', e => {
   touchstartX = e.changedTouches[0].screenX;
   touchstartY = e.changedTouches[0].screenY;
-  myElement = e.path;
+  var path = e.path || (e.composedPath && e.composedPath());
+  myElement = path;
 });
 
 window.addEventListener('touchend', e => {
