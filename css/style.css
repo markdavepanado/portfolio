@@ -305,7 +305,6 @@ body.error .header-main-footer-container main {
     border-right: 0.1rem solid var(--strong-color);
     font-weight: lighter;
     letter-spacing: 0.08em;
-    
 }
 
 .typewriter-container > .typewriter > b {
@@ -346,6 +345,15 @@ body.error .header-main-footer-container main {
     left: 0;
     background-color: var(--primary-color);
     padding: 5px;
+}
+
+.work-experience-line-vertical:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 5px solid var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .about-me-line-vertical, .work-experience-line-vertical {
