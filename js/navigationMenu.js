@@ -21,11 +21,21 @@ var awardAnimaCounter = [];
 for(var pac = 0; pac < awardDetails.length; pac++){
     programAnimaCounter[pac] = 0;
 }
+
 for(var aac = 0; aac < awardDetails.length; aac++){
     awardAnimaCounter[aac] = 0;
 }
 
+var workExpAnimaCounter = 0;
+var lwDetailsAnimaCounter = 0;
+var pastWorkAnimaCounter = [];
+
+for(var pwc = 0; pwc < pastWork.length; pwc++){
+    pastWorkAnimaCounter[pwc] = 0;
+}
+
 var offsetHalf = .60;
+var weoffsetHalf = .75;
 
 highlightActiveMenu();
 main.addEventListener('scroll' || 'wheel' || 'DOMMouseScroll' || 'mousewheel', highlightActiveMenu);
@@ -55,17 +65,7 @@ function suvlAnima() {
         }
 }
 
-function getPaddingXaxis(element) {
-    return parseFloat(window.getComputedStyle(element).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingRight.replace(/\D/g,''));
-}
-
-function getPaddingYaxis(element) {
-    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingBottom.replace(/\D/g,''));
-}
-
-function getPaddingTop(element) {
-    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,''));
-}
+// ABOUT ME
 
 function personaldAnima() {
     let fromTop = main.scrollTop + main.offsetTop + 5;
@@ -132,6 +132,72 @@ function awarddAnima(element, index) {
         }
 }
 
+// WORK EXPERIENCE
+function workExpAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var workExpOffSetTop = workExperience.offsetTop;
+    var workExpOffSetTopHalf = workExpOffSetTop * weoffsetHalf;
+    var workExpOffSetHeight = workExperience.offsetHeight;
+
+        if(
+            // workExpOffSetTopHalf <= fromTop && 
+            workExpOffSetTopHalf <= fromTop && 
+            (workExpOffSetTop + workExpOffSetHeight) > fromTop
+        ) {
+            workExpAnimaCounter++;
+        } else {
+            workExpAnimaCounter = 0
+        }
+        
+        if(workExpAnimaCounter == 1) {
+            slideUpWEvLine();
+        } else if(workExpAnimaCounter == 0) {
+            clearSlideUpWEvLine();
+        }
+}
+
+function lwDetailsAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var latestWorkOffSetTop = latestWork.offsetTop;
+    var latestWorkoffSetTopHalf = (workExperience.offsetTop + latestWorkOffSetTop) * weoffsetHalf;
+    var latestWorkoffSetTopHeight = (workExperience.offsetTop + latestWorkOffSetTop) + getPaddingTop(latestWork);
+        if(
+            latestWorkoffSetTopHalf <= fromTop && latestWorkoffSetTopHeight > fromTop
+        ) {
+            lwDetailsAnimaCounter++;
+            
+        } else {
+            lwDetailsAnimaCounter = 0;
+        }
+
+        if(lwDetailsAnimaCounter == 1) {
+            setTimeout(slideRightLWlinehorizontal, 500);
+        } else if (lwDetailsAnimaCounter == 0) {
+            clearLatestWork();
+        }
+}
+
+function pastWorkAnima(element, index) {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var pastWorkOffSetTop = element.offsetTop;
+    var advancepastWorkoffSetTopHalf = (workExperience.offsetTop + pastWorkOffSetTop) * weoffsetHalf;
+    var advancepastWorkoffSetTopHeight = workExperience.offsetTop + pastWorkOffSetTop;
+
+        if(
+            advancepastWorkoffSetTopHalf <= fromTop && advancepastWorkoffSetTopHeight > fromTop
+        ) {
+            pastWorkAnimaCounter[index]++;
+        } else {
+            pastWorkAnimaCounter[index] = 0;
+        }
+
+        if(pastWorkAnimaCounter[index] == 1) {
+            slideRightPWLineHorizontal(element);
+        } else if (pastWorkAnimaCounter[index] == 0) {
+            clearPastWork(element);
+        }
+}
+
 function highlightActiveMenu() {
     let navigationLinks = document.querySelectorAll('nav ul li a');
     let fromTop = main.scrollTop + main.offsetTop + 5;
@@ -143,8 +209,17 @@ function highlightActiveMenu() {
     for(var i = 0; i < programDetails.length; i++) {
         programdAnima(programDetails[i], i);
     }
+
     for(var a = 0; a < awardDetails.length; a++) {
         awarddAnima(awardDetails[a], a);
+    }
+
+    // WORK EXP
+    workExpAnima();
+    lwDetailsAnima();
+
+    for(var b = 0; b < pastWork.length; b++) {
+        pastWorkAnima(pastWork[b], b);
     }
     
     navigationLinks.forEach(link => {
@@ -323,6 +398,21 @@ function slideOutMobileNavUL(){
         }
         
     }, 1);
+}
+
+// PADDING LEFT RIGHT
+function getPaddingXaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingRight.replace(/\D/g,''));
+}
+
+// PADDING TOP BOTTOM
+function getPaddingYaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingBottom.replace(/\D/g,''));
+}
+
+// PADDING TOP
+function getPaddingTop(element) {
+    return parseFloat(window.getComputedStyle(element).paddingTop.replace(/\D/g,''));
 }
 
 window.addEventListener('resize', function(event){

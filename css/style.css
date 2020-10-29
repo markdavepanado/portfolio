@@ -333,7 +333,7 @@ body.error .header-main-footer-container main {
 
 /* >>>>> ABOUT ME */
 
-#aboutme {
+#aboutme, #workexperience {
     overflow: hidden;
 }
 
@@ -345,7 +345,7 @@ body.error .header-main-footer-container main {
     left: 0;
 }
 
-.about-me-line-vertical {
+.about-me-line-vertical, .work-experience-line-vertical {
     width: 100%;
     min-height: calc(100vh - 20vh);
     border-left: 2px solid var(--primary-color);
@@ -442,6 +442,46 @@ body.error .header-main-footer-container main {
     font-weight: 300;
 }
 
+/* WORK EXPERIENCE */
+
+.work-experience-line-vertical {
+    align-items: flex-start;
+}
+
+.latest-work, .past-work {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.past-work {
+    margin-bottom: 15px;
+}
+
+.latest-work h1 {
+    display: flex;
+    align-items: center;
+}
+
+.latest-work-details,
+.past-work-details {
+    opacity: 0;
+}
+
+.past-work-details svg,
+.latest-work-details svg {
+    width: 1.5em;
+    margin-left: 4px;
+}
+
+.past-work h2 {
+    display: flex;
+    align-items: center;
+}
+
+.past-work p, .latest-work p {
+    font-weight: 300;
+}
 
 @media only screen and (min-width: 769px) {
     
@@ -499,6 +539,47 @@ body.error .header-main-footer-container main {
 
     .award-information p:last-of-type, .program-information p:last-of-type {
         font-size: 0.15em;
+    }
+
+    .latest-work {
+        padding: 45px 0 20px;
+    }
+
+    .latest-work h1 {
+        font-size: 0.4em;
+    }
+
+    .latest-work p:first-of-type {
+        font-size: 0.3em;
+    }
+
+    .latest-work p:last-of-type {
+        font-size: 0.2em;
+    }
+
+    .latest-work-details {
+        line-height: 0.4em;
+    }
+
+    .latest-work p:first-of-type {
+        margin-top: 5px;
+    }
+
+    .past-work h2 {
+        font-size: 0.2em;
+    }
+
+    .past-work p:first-of-type {
+        font-size: 0.17em;
+        margin-top: 5px;
+    }
+
+    .past-work p:last-of-type {
+        font-size: 0.15em;
+    }
+
+    .past-work-details {
+        line-height: 0.24em;
     }
 
     .copyright-container {
@@ -633,6 +714,46 @@ body.error .header-main-footer-container main {
         font-size: 0.35em;
     }
 
+    .latest-work {
+        padding: 20px 0;
+    }
+
+    .latest-work h1 {
+        font-size: 0.6em;
+    }
+
+    .latest-work p:first-of-type {
+        font-size: 0.5em;
+    }
+
+    .latest-work p:last-of-type {
+        font-size: 0.4em;
+    }
+
+    .latest-work-details {
+        line-height: 0.7em;
+    }
+
+    .latest-work p:first-of-type {
+        margin-top: 0;
+    }
+
+    .past-work h2 {
+        font-size: 0.4em;
+    }
+
+    .past-work p:first-of-type {
+        font-size: 0.37em;
+    }
+
+    .past-work p:last-of-type {
+        font-size: 0.35em;
+    }
+
+    .past-work-details {
+        line-height: 0.54em;
+    }
+
     .copyright-container {
         min-width: 100%;
     }
@@ -644,6 +765,6 @@ body.error .header-main-footer-container main {
 }
 
 /* TEMPORARY */
-#workexperience, #skills, #hireme {
+#skills, #hireme {
     align-items: center;
 }
