@@ -34,8 +34,18 @@ for(var pwc = 0; pwc < pastWork.length; pwc++){
     pastWorkAnimaCounter[pwc] = 0;
 }
 
+var skillsAnimaCounter = 0;
+var sdAnimaCounter = [];
+
+for(var sdc = 0; sdc < skillsDetails.length; sdc++){
+    sdAnimaCounter[sdc] = 0;
+}
+
 var offsetHalf = .60;
 var weoffsetHalf = .75;
+var soffsetHalf = .85;
+
+
 
 highlightActiveMenu();
 main.addEventListener('scroll' || 'wheel' || 'DOMMouseScroll' || 'mousewheel', highlightActiveMenu);
@@ -198,6 +208,52 @@ function pastWorkAnima(element, index) {
         }
 }
 
+// SKILLS
+
+function skillsAnima() {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var skillsOffSetTop = skills.offsetTop;
+    var skillsOffSetTopHalf = skillsOffSetTop * soffsetHalf;
+    var skillsOffSetHeight = skills.offsetHeight;
+
+        if(
+            // workExpOffSetTopHalf <= fromTop && 
+            skillsOffSetTopHalf <= fromTop && 
+            (skillsOffSetTop + skillsOffSetHeight) > fromTop
+        ) {
+            skillsAnimaCounter++;
+        } else {
+            skillsAnimaCounter = 0
+        }
+        
+        if(skillsAnimaCounter == 1) {
+            slideUpSvLine();
+        } else if(skillsAnimaCounter == 0) {
+            clearSlideUpSvLine();
+        }
+}
+
+function skillsDetailsAnima(element, index) {
+    let fromTop = main.scrollTop + main.offsetTop + 5;
+    var skillsDetailsOffSetTop = element.offsetTop;
+    var advanceSDoffSetTopHalf = (skills.offsetTop + skillsDetailsOffSetTop) * soffsetHalf;
+    var advanceSDoffSetTopHeight = skills.offsetTop + skillsDetailsOffSetTop + getPaddingTop(element);
+
+        if(
+            advanceSDoffSetTopHalf <= fromTop && advanceSDoffSetTopHeight > fromTop
+        ) {
+            sdAnimaCounter[index]++;
+        } else {
+            sdAnimaCounter[index] = 0;
+        }
+
+        if(sdAnimaCounter[index] == 1) {
+            slideRightSLineHorizontal(element);
+        } else if (sdAnimaCounter[index] == 0) {
+            clearSkillsDetails(element);
+        }
+}
+
 function highlightActiveMenu() {
     let navigationLinks = document.querySelectorAll('nav ul li a');
     let fromTop = main.scrollTop + main.offsetTop + 5;
@@ -221,6 +277,14 @@ function highlightActiveMenu() {
     for(var b = 0; b < pastWork.length; b++) {
         pastWorkAnima(pastWork[b], b);
     }
+
+    // SKILLS
+    skillsAnima();
+
+    for(var c = 0; c < skillsDetails.length; c++) {
+        skillsDetailsAnima(skillsDetails[c], c);
+    }
+    
     
     navigationLinks.forEach(link => {
         let section = document.querySelector('#'+ link.href.split("#")[1] || "");

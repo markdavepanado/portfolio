@@ -333,10 +333,11 @@ body.error .header-main-footer-container main {
 
 /* >>>>> ABOUT ME */
 
-#aboutme, #workexperience {
+#aboutme, #workexperience, #skills {
     overflow: hidden;
 }
 
+.skills-line-vertical:before,
 .work-experience-line-vertical:before,
 .about-me-line-vertical:before {
     content: "About Me";
@@ -347,16 +348,16 @@ body.error .header-main-footer-container main {
     padding: 5px;
 }
 
-.work-experience-line-vertical:after {
+/* .work-experience-line-vertical:after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     border: 5px solid var(--primary-color);
     background-color: var(--primary-color);
-}
+} */
 
-.about-me-line-vertical, .work-experience-line-vertical {
+.about-me-line-vertical, .work-experience-line-vertical, .skills-line-vertical {
     width: 100%;
     min-height: calc(100vh - 20vh);
     border-left: 2px solid var(--primary-color);
@@ -463,7 +464,7 @@ body.error .header-main-footer-container main {
     align-items: flex-start;
 }
 
-.latest-work, .past-work {
+.latest-work, .past-work, .skills-details {
     display: flex;
     align-items: center;
     width: 100%;
@@ -497,6 +498,60 @@ body.error .header-main-footer-container main {
 
 .past-work p, .latest-work p {
     font-weight: 300;
+}
+
+/* SKILLS */
+
+.skills-line-vertical:before {
+    content: 'Skills';
+}
+
+.skills-line-vertical {
+    transform: initial;
+}
+
+.skills-details {
+    margin-bottom: 15px;
+}
+
+.skills-details .skills-information {
+    padding: 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100vw);
+}
+
+.skills-pie-words {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.skills-information p {
+    font-weight: 300;
+}
+
+.skills-words span {
+    font-weight: bold;
+}
+
+.skills-words {
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-words, .pie-chart {
+    margin: 5px;
+}
+
+.pie-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-image: conic-gradient(var(--strong-color) 0deg, var(--primary-color) 0); 
 }
 
 @media only screen and (min-width: 769px) {
@@ -598,8 +653,26 @@ body.error .header-main-footer-container main {
         line-height: 0.24em;
     }
 
+    .skills-line-vertical:before,
     .work-experience-line-vertical:before,
     .about-me-line-vertical:before {
+        font-size: 0.2em;
+    }
+    
+    .skills-details:first-of-type {
+        padding: 65px 0 20px;
+    }
+
+    .pie-chart {
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .skills-information h1 {
+        font-size: 0.3em;
+    }
+    
+    .skills-information p {
         font-size: 0.2em;
     }
 
@@ -775,8 +848,26 @@ body.error .header-main-footer-container main {
         line-height: 0.54em;
     }
 
+    .skills-line-vertical:before,
     .work-experience-line-vertical:before,
     .about-me-line-vertical:before {
+        font-size: 0.4em;
+    }
+
+    .skills-details:first-of-type {
+        padding: 40px 0 20px;
+    }
+
+    .pie-chart {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .skills-information h1 {
+        font-size: 0.5em;
+    }
+    
+    .skills-information p {
         font-size: 0.4em;
     }
 
@@ -791,6 +882,6 @@ body.error .header-main-footer-container main {
 }
 
 /* TEMPORARY */
-#skills, #hireme {
+#hireme {
     align-items: center;
 }
