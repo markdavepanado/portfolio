@@ -348,15 +348,6 @@ body.error .header-main-footer-container main {
     padding: 5px;
 }
 
-/* .work-experience-line-vertical:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border: 5px solid var(--primary-color);
-    background-color: var(--primary-color);
-} */
-
 .about-me-line-vertical, .work-experience-line-vertical, .skills-line-vertical {
     width: 100%;
     min-height: calc(100vh - 20vh);
@@ -502,8 +493,21 @@ body.error .header-main-footer-container main {
 
 /* SKILLS */
 
+#skills {
+    padding-bottom: 5px;
+}
+
 .skills-line-vertical:before {
     content: 'Skills';
+}
+
+.skills-line-vertical:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 5px solid var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .skills-line-vertical {
