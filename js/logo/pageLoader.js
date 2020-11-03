@@ -43,6 +43,7 @@ function slideleftImg(){
             fadeinText();
             setTimeout(function() {
                 loadingImg.style.width = "4vw";
+                loadingImg.style.borderRadius = "50%";
             }, 500);
             window.clearInterval(instance);
             loadingImgTextContainer.style.transform = "translateX(" + 0 + "%)";
@@ -88,13 +89,20 @@ function spinImg() {
 }
 
 function doneLoading(instance) {
+    // fake data ready
     setTimeout(function() {
         window.clearInterval(instance);
-        fadeOutLoading();
         loadingImg.style.transform = "none";
+        loadingImg.style.borderRadius = "0";
+
         setTimeout(function() {
-            myTypeWriterInit();
-        }, 2000);
+            fadeOutLoading();
+            setTimeout(function() {
+                myTypeWriterInit();
+            }, 2000);
+
+        }, 350);
+
     }, 2000);
 }
 

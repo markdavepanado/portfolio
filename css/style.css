@@ -58,7 +58,7 @@ body {
 .loading img {
     width: 5vw;
     opacity: 0;
-    transition: width 1s;
+    transition: width 1s, border-radius 1s;
 }
 
 .loading-creator {
