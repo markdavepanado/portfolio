@@ -214,7 +214,7 @@ main {
 }
 
 .navigation-indicator-container .navigation-dot-indicator a {
-    margin: 10px 0;
+    margin: 15px 0;
     text-decoration: none;
     color: var(--strong-color);
     display: flex;
@@ -558,6 +558,65 @@ body.error .header-main-footer-container main {
     background-image: conic-gradient(var(--strong-color) 0deg, var(--primary-color) 0); 
 }
 
+/* HIRE ME */
+#hireme {
+    align-items: center;
+    justify-content: space-around;
+}
+
+#hireme p {
+    font-weight: lighter;
+}
+
+#hireme h1 {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+#yourNextJob {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#hireme small {
+    font-weight: 300;
+    display: block;
+    text-align: end;
+    margin-top: 5px;
+}
+
+#yourEmail {
+    background-color: var(--primary-color);
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--strong-color);
+}
+
+.hireme-details {
+    display: flex;
+    align-items: center;
+}
+
+.hireme-details .line-horizontal {
+    transform: initial;
+    width: 4vw;
+}
+
+.hireme-picture {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    padding: 15px;
+    max-width: 50%;
+}
+
+.hireme-picture img {
+    max-height: calc(100vh - 50vh);
+    max-width: 100%;
+}
+
 @media only screen and (min-width: 769px) {
 
     .header-main-footer-container footer nav ul li a {
@@ -678,6 +737,18 @@ body.error .header-main-footer-container main {
     
     .skills-information p {
         font-size: 0.2em;
+    }
+
+    #hireme p {
+        font-size: 0.2em;
+    }
+
+    #hireme h1 {
+        font-size: 0.3em;
+    }
+
+    #hireme small {
+        font-size: 0.15em;
     }
 
     .copyright-container {
@@ -875,6 +946,18 @@ body.error .header-main-footer-container main {
         font-size: 0.4em;
     }
 
+    #hireme p {
+        font-size: 0.3em;
+    }
+
+    #hireme h1 {
+        font-size: 0.4em;
+    }
+
+    #hireme small {
+        font-size: 0.25em;
+    }
+
     .copyright-container {
         min-width: 100%;
     }
@@ -883,9 +966,4 @@ body.error .header-main-footer-container main {
         width: calc(100% - 40px);
     }
 
-}
-
-/* TEMPORARY */
-#hireme {
-    align-items: center;
 }
