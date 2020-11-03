@@ -1,9 +1,6 @@
 var skills = document.getElementById('skills');
 var sLineVertical = document.getElementsByClassName('skills-line-vertical')[0];
 var skillsDetails = Array.from(document.getElementsByClassName('skills-details'));
-// var skillRate = document.getElementById("skillRate");
-// var skillRateDesc = document.getElementById("skillRateDesc");
-// var skillRateValue = skillRate.innerText;
 
 function slideUpSvLine() {
     sLineVertical.style.transition = "initial";
@@ -76,7 +73,6 @@ function slideInSinformation(element) {
 }
 
 function animateSinformation(element) {
-    var si = element.getElementsByClassName("skills-information")[0];
     var siPieChart = element.getElementsByClassName("pie-chart")[0];
     var skillRate = element.getElementsByClassName("skill-rate")[0];
     var skillRateDesc = element.getElementsByClassName("skill-rate-desc")[0];
@@ -106,4 +102,9 @@ function clearSkillsDetails(element) {
     element.getElementsByClassName("skills-information")[0].style.transform = "translateX(100vw)";
     element.getElementsByClassName("skill-rate-desc")[0].innerText = 0;
     element.getElementsByClassName("pie-chart")[0].style.backgroundImage = "conic-gradient(var(--strong-color) 0deg, var(--primary-color) 0)";
+}
+
+// PADDING LEFT RIGHT
+function getPaddingXaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingRight.replace(/\D/g,''));
 }

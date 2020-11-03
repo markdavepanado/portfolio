@@ -76,8 +76,8 @@ function fadeInImg() {
 
 function slideLeftPI() {
     personalInformation.style.transition = "initial";
-    var bodyPaddingXaxis = parseFloat(window.getComputedStyle(document.body).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(document.body).paddingRight.replace(/\D/g,''));
-    var piPaddingXaxis = parseFloat(window.getComputedStyle(personalInformation).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(personalInformation).paddingRight.replace(/\D/g,''));
+    var bodyPaddingXaxis = getPaddingXaxis(document.body);
+    var piPaddingXaxis = getPaddingXaxis(personalInformation);
     var personalDetailsWidth = Math.round(personalDetails.getBoundingClientRect().width) + bodyPaddingXaxis + Math.round(pdImg.getBoundingClientRect().width) + piPaddingXaxis;
     var translateXpixels = getCurrentTranslateX(personalInformation);
     var translateXpercentage = Math.round((translateXpixels / personalDetailsWidth) * 100) + 1;
@@ -227,4 +227,9 @@ function getCurrentTranslateY(element) {
     }
     return 0;
     
+}
+
+// PADDING LEFT RIGHT
+function getPaddingXaxis(element) {
+    return parseFloat(window.getComputedStyle(element).paddingLeft.replace(/\D/g,'')) + parseFloat(window.getComputedStyle(element).paddingRight.replace(/\D/g,''));
 }

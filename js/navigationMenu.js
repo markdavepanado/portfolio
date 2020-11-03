@@ -41,12 +41,6 @@ for(var sdc = 0; sdc < skillsDetails.length; sdc++){
     sdAnimaCounter[sdc] = 0;
 }
 
-var offsetHalf = .60;
-var weoffsetHalf = .75;
-var soffsetHalf = .85;
-
-
-
 highlightActiveMenu();
 main.addEventListener('scroll' || 'wheel' || 'DOMMouseScroll' || 'mousewheel', highlightActiveMenu);
 menuButton.addEventListener('click', toggleMenuMobile);
@@ -54,14 +48,12 @@ menuButton.addEventListener('click', toggleMenuMobile);
 
 
 function suvlAnima() {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var aboutMeOffSetTop = aboutMe.offsetTop;
-    var aboutMeOffSetTopHalf = aboutMeOffSetTop * offsetHalf;
-    var aboutMeOffSetHeight = aboutMe.offsetHeight;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var aboutMeOffSetTopHalf = Math.round(aboutMe.offsetTop - (main.offsetHeight / 2));
+    var aboutMeOffSetHeight = Math.round(aboutMe.offsetHeight + aboutMe.offsetTop);
 
         if(
-            aboutMeOffSetTopHalf <= fromTop && 
-            (aboutMeOffSetTop + aboutMeOffSetHeight) > fromTop
+            aboutMeOffSetTopHalf <= fromTop && aboutMeOffSetHeight > fromTop
         ) {
             suvlAnimaCounter++;
         } else {
@@ -78,10 +70,10 @@ function suvlAnima() {
 // ABOUT ME
 
 function personaldAnima() {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var personalDetailsOffSetTop = personalDetails.offsetTop;
-    var advancePDoffSetTopHalf = (aboutMe.offsetTop + personalDetailsOffSetTop) * offsetHalf;
-    var advancePDoffSetTopHeight = aboutMe.offsetTop + personalDetailsOffSetTop + personalDetails.offsetHeight - getPaddingTop(personalDetails);
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var advancePDoffSetTopHalf = Math.round((aboutMe.offsetTop + personalDetails.offsetTop) - (main.offsetHeight / 2));
+    var advancePDoffSetTopHeight = Math.round(aboutMe.offsetTop + personalDetails.offsetTop + personalDetails.offsetHeight - getPaddingTop(personalDetails));
+
         if(
             advancePDoffSetTopHalf <= fromTop && advancePDoffSetTopHeight > fromTop
         ) {
@@ -99,10 +91,9 @@ function personaldAnima() {
 }
 
 function programdAnima(element, index) {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var programDetailsOffSetTop = element.offsetTop;
-    var advanceProgramDoffSetTopHalf = (aboutMe.offsetTop + programDetailsOffSetTop) * offsetHalf;
-    var advanceProgramDoffSetTopHeight = aboutMe.offsetTop + programDetailsOffSetTop;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var advanceProgramDoffSetTopHalf = Math.round((aboutMe.offsetTop + element.offsetTop) - (main.offsetHeight / 2));
+    var advanceProgramDoffSetTopHeight = Math.round(aboutMe.offsetTop + element.offsetTop + getPaddingTop(element));
         if(
             advanceProgramDoffSetTopHalf <= fromTop && advanceProgramDoffSetTopHeight > fromTop
         ) {
@@ -120,10 +111,9 @@ function programdAnima(element, index) {
 }
 
 function awarddAnima(element, index) {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var awardDetailsOffSetTop = element.offsetTop;
-    var advanceAwardDoffSetTopHalf = (aboutMe.offsetTop + awardDetailsOffSetTop) * offsetHalf;
-    var advanceAwardDoffSetTopHeight = aboutMe.offsetTop + awardDetailsOffSetTop;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var advanceAwardDoffSetTopHalf = Math.round((aboutMe.offsetTop + element.offsetTop) - (main.offsetHeight / 2));
+    var advanceAwardDoffSetTopHeight = Math.round(aboutMe.offsetTop + element.offsetTop + getPaddingTop(element));
 
         if(
             advanceAwardDoffSetTopHalf <= fromTop && advanceAwardDoffSetTopHeight > fromTop
@@ -144,15 +134,12 @@ function awarddAnima(element, index) {
 
 // WORK EXPERIENCE
 function workExpAnima() {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var workExpOffSetTop = workExperience.offsetTop;
-    var workExpOffSetTopHalf = workExpOffSetTop * weoffsetHalf;
-    var workExpOffSetHeight = workExperience.offsetHeight;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var workExpOffSetTopHalf = Math.round(workExperience.offsetTop - (main.offsetHeight / 2));
+    var workExpOffSetHeight = Math.round(workExperience.offsetHeight + workExperience.offsetTop);
 
         if(
-            // workExpOffSetTopHalf <= fromTop && 
-            workExpOffSetTopHalf <= fromTop && 
-            (workExpOffSetTop + workExpOffSetHeight) > fromTop
+            workExpOffSetTopHalf <= fromTop && workExpOffSetHeight > fromTop
         ) {
             workExpAnimaCounter++;
         } else {
@@ -167,10 +154,9 @@ function workExpAnima() {
 }
 
 function lwDetailsAnima() {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var latestWorkOffSetTop = latestWork.offsetTop;
-    var latestWorkoffSetTopHalf = (workExperience.offsetTop + latestWorkOffSetTop) * weoffsetHalf;
-    var latestWorkoffSetTopHeight = (workExperience.offsetTop + latestWorkOffSetTop) + getPaddingTop(latestWork);
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var latestWorkoffSetTopHalf = Math.round((workExperience.offsetTop + latestWork.offsetTop)  - (main.offsetHeight / 2));
+    var latestWorkoffSetTopHeight = Math.round(workExperience.offsetTop + latestWork.offsetTop + getPaddingTop(latestWork));
         if(
             latestWorkoffSetTopHalf <= fromTop && latestWorkoffSetTopHeight > fromTop
         ) {
@@ -188,10 +174,9 @@ function lwDetailsAnima() {
 }
 
 function pastWorkAnima(element, index) {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var pastWorkOffSetTop = element.offsetTop;
-    var advancepastWorkoffSetTopHalf = (workExperience.offsetTop + pastWorkOffSetTop) * weoffsetHalf;
-    var advancepastWorkoffSetTopHeight = workExperience.offsetTop + pastWorkOffSetTop;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var advancepastWorkoffSetTopHalf = Math.round((workExperience.offsetTop + element.offsetTop) - (main.offsetHeight / 2));
+    var advancepastWorkoffSetTopHeight = Math.round(workExperience.offsetTop + element.offsetTop + getPaddingTop(element));
 
         if(
             advancepastWorkoffSetTopHalf <= fromTop && advancepastWorkoffSetTopHeight > fromTop
@@ -211,15 +196,12 @@ function pastWorkAnima(element, index) {
 // SKILLS
 
 function skillsAnima() {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var skillsOffSetTop = skills.offsetTop;
-    var skillsOffSetTopHalf = skillsOffSetTop * soffsetHalf;
-    var skillsOffSetHeight = skills.offsetHeight;
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var skillsOffSetTopHalf = Math.round(skills.offsetTop - (main.offsetHeight / 2));
+    var skillsOffSetHeight = Math.round(skills.offsetHeight + skills.offsetTop);
 
         if(
-            // workExpOffSetTopHalf <= fromTop && 
-            skillsOffSetTopHalf <= fromTop && 
-            (skillsOffSetTop + skillsOffSetHeight) > fromTop
+            skillsOffSetTopHalf <= fromTop && skillsOffSetHeight > fromTop
         ) {
             skillsAnimaCounter++;
         } else {
@@ -234,10 +216,9 @@ function skillsAnima() {
 }
 
 function skillsDetailsAnima(element, index) {
-    let fromTop = main.scrollTop + main.offsetTop + 5;
-    var skillsDetailsOffSetTop = element.offsetTop;
-    var advanceSDoffSetTopHalf = (skills.offsetTop + skillsDetailsOffSetTop) * soffsetHalf;
-    var advanceSDoffSetTopHeight = skills.offsetTop + skillsDetailsOffSetTop + getPaddingTop(element);
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    var advanceSDoffSetTopHalf = Math.round((skills.offsetTop + element.offsetTop)  - (main.offsetHeight / 2));
+    var advanceSDoffSetTopHeight = Math.round(skills.offsetTop + element.offsetTop + getPaddingTop(element));
 
         if(
             advanceSDoffSetTopHalf <= fromTop && advanceSDoffSetTopHeight > fromTop

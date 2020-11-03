@@ -307,7 +307,7 @@ body.error .header-main-footer-container main {
     letter-spacing: 0.08em;
 }
 
-.typewriter-container > .typewriter > b {
+.typewriter-container > .typewriter > b, .typewriter-container > .typewriter > strong {
     animation-name: fadeInTxt;
     animation-duration: 2s;
     animation-fill-mode: forwards;

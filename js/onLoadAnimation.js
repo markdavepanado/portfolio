@@ -9,15 +9,11 @@ if (typeof(window.history.pushState) == 'function') {
 // ANIMATION
 
 var hmfContainer = document.getElementsByClassName("header-main-footer-container")[0];
-
 var logoHeader = hmfContainer.getElementsByTagName("header")[0];
-
 var navMenu = hmfContainer.getElementsByTagName("footer")[0].getElementsByClassName("navigation-menu")[0];
 var navMenuButton = navMenu.getElementsByTagName("button")[0];
 var navIndicatorContainer = document.getElementsByClassName("navigation-indicator-container")[0];
-
 var content = document.getElementById("content");
-
 var copyright = document.getElementsByClassName("copyright-container")[0];
 
 function onLoadInit() {

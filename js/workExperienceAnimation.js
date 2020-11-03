@@ -1,11 +1,8 @@
 var workExperience = document.getElementById("workexperience");
 var weLineVertical = document.getElementsByClassName("work-experience-line-vertical")[0];
-
 var latestWork = document.getElementsByClassName("latest-work")[0];
 var lwFirstLineHorizontal = latestWork.getElementsByClassName("line-horizontal")[0];
 var lwDetails = latestWork.getElementsByClassName("latest-work-details")[0];
-
-
 var pastWork = Array.from(document.getElementsByClassName("past-work"));
 
 function slideUpWEvLine() {
