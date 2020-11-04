@@ -371,7 +371,6 @@ body.error .header-main-footer-container main {
     width: 100%;
     display: flex;
     align-items: center;
-    /* margin-bottom: 40px; */
 }
 
 .personal-details img {
@@ -494,7 +493,7 @@ body.error .header-main-footer-container main {
 /* SKILLS */
 
 #skills {
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .skills-line-vertical:before {
@@ -562,15 +561,25 @@ body.error .header-main-footer-container main {
 #hireme {
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    overflow: hidden;
 }
 
 #hireme p {
     font-weight: lighter;
 }
 
+#hireme p > strong, #hireme p > span {
+    opacity: 0;
+}
+
 #hireme h1 {
     font-weight: 300;
     letter-spacing: 0.05em;
+}
+
+#hireme h1, #hireme h1 > span {
+    opacity: 0;
 }
 
 #yourNextJob {
@@ -583,6 +592,7 @@ body.error .header-main-footer-container main {
     display: block;
     text-align: end;
     margin-top: 5px;
+    transform: translateY(100vw);
 }
 
 #yourEmail {
@@ -599,7 +609,7 @@ body.error .header-main-footer-container main {
 }
 
 .hireme-details .line-horizontal {
-    transform: initial;
+    transform: translateX(-25vw);
     width: 4vw;
 }
 
@@ -610,11 +620,14 @@ body.error .header-main-footer-container main {
     align-items: flex-end;
     padding: 15px;
     max-width: 50%;
+    opacity: 0;
+    overflow: hidden;
 }
 
 .hireme-picture img {
     max-height: calc(100vh - 50vh);
     max-width: 100%;
+    transform: translateY(110%);
 }
 
 @media only screen and (min-width: 769px) {
@@ -946,16 +959,25 @@ body.error .header-main-footer-container main {
         font-size: 0.4em;
     }
 
+    #hireme {
+        align-content: space-evenly;
+    }
+
+    .hireme-details {
+        justify-content: center;
+        width: 100%;
+    }
+
     #hireme p {
-        font-size: 0.3em;
+        font-size: 0.5em;
     }
 
     #hireme h1 {
-        font-size: 0.4em;
+        font-size: 0.7em;
     }
 
     #hireme small {
-        font-size: 0.25em;
+        font-size: 0.45em;
     }
 
     .copyright-container {

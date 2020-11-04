@@ -216,7 +216,7 @@ function skillsAnima() {
             clearSlideUpSvLine();
         }
 }
-// offsetDecreaseValue
+
 function skillsDetailsAnima(element, index) {
     let fromTop = Math.round(main.scrollTop + main.offsetTop);
     var advanceSDoffSetTopHalf = Math.round((skills.offsetTop + element.offsetTop + getPaddingTop(element))  - (main.offsetHeight * offsetDecreaseValue));
@@ -235,6 +235,19 @@ function skillsDetailsAnima(element, index) {
         } else if (sdAnimaCounter[index] == 0) {
             clearSkillsDetails(element);
         }
+}
+
+// HIRE ME
+
+function fullSkillsAnima() {
+    let fromTop = Math.round(main.scrollTop + main.offsetTop);
+    
+    if(Math.round(hireme.offsetTop) <= fromTop && Math.round(hireme.offsetTop + hireme.offsetHeight) > fromTop) 
+    {
+        fadeInHMP();   
+    } else {
+        clearHManima();
+    }
 }
 
 function highlightActiveMenu() {
@@ -267,6 +280,9 @@ function highlightActiveMenu() {
     for(var c = 0; c < skillsDetails.length; c++) {
         skillsDetailsAnima(skillsDetails[c], c);
     }
+
+    // HIRE ME
+    fullSkillsAnima();
     
     
     navigationLinks.forEach(link => {
