@@ -164,9 +164,6 @@ function slideUpHMinfoSmall() {
 
 }
 
-function clearMyInterval(myInterval) {
-    window.clearInterval(myInterval);
-}
 function clearHManima() {
     hiremePicture.style.transition = "all 500ms";
     hiremePicture.style.opacity = 0;
