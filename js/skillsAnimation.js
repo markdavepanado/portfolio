@@ -1,6 +1,12 @@
 var skills = document.getElementById('skills');
 var sLineVertical = document.getElementsByClassName('skills-line-vertical')[0];
 var skillsDetails = Array.from(document.getElementsByClassName('skills-details'));
+// const skillRatebl = Array.from(document.getElementsByClassName('skill-rate'));
+var skillRateArr = [];
+
+skillsDetails.forEach(sDetail => {
+    skillRateArr.push(sDetail.getElementsByClassName("skill-rate")[0].innerText);
+});
 
 function slideUpSvLine() {
     sLineVertical.style.transition = "initial";
@@ -28,7 +34,7 @@ function clearSlideUpSvLine() {
     sLineVertical.style.transform = "translateY(110%)";
 }
 
-function slideRightSLineHorizontal(element) {
+function slideRightSLineHorizontal(element, index) {
     var sLineHorizontal = element.getElementsByClassName("line-horizontal")[0];
     sLineHorizontal.style.transition = "initial";
     var sLineHorizontalWidth = Math.round(sLineHorizontal.getBoundingClientRect().width);
@@ -42,7 +48,7 @@ function slideRightSLineHorizontal(element) {
         if(value > 0) {
             window.clearInterval(instance);
             sLineHorizontal.style.transform = "initial";
-            slideInSinformation(element);
+            slideInSinformation(element, index);
         } else {
             sLineHorizontal.style.transform = "translateX(" + value + "%)";
             value = value + decrement;
@@ -50,7 +56,7 @@ function slideRightSLineHorizontal(element) {
     }, 5);
 }
 
-function slideInSinformation(element) {
+function slideInSinformation(element, index) {
     var sInformation = element.getElementsByClassName("skills-information")[0];
     sInformation.style.transition = "initial";
     var bodyPaddingXaxis = getPaddingXaxis(document.body);
@@ -64,7 +70,7 @@ function slideInSinformation(element) {
         if(value < 0) {
             window.clearInterval(instance);
             sInformation.style.transform = "initial";
-            animateSinformation(element);
+            animateSinformation(element, index);
         } else {
             sInformation.style.transform = "translateX(" + value +"vw)";
             value = value - decrement;
@@ -72,11 +78,11 @@ function slideInSinformation(element) {
     }, 1);
 }
 
-function animateSinformation(element) {
+function animateSinformation(element, index) {
     var siPieChart = element.getElementsByClassName("pie-chart")[0];
     var skillRate = element.getElementsByClassName("skill-rate")[0];
     var skillRateDesc = element.getElementsByClassName("skill-rate-desc")[0];
-    var skillRateValue = skillRate.innerText;
+    var skillRateValue = skillRateArr[index];
 
     var increment = 1;
     var value = 0;

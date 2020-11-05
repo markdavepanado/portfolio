@@ -234,7 +234,7 @@ function skillsDetailsAnima(element, index) {
 
         if(sdAnimaCounter[index] == 1) {
             if(!isScrollStop) {
-            slideRightSLineHorizontal(element);
+            slideRightSLineHorizontal(element, index);
             }
         } else if (sdAnimaCounter[index] == 0) {
             clearSkillsDetails(element);
