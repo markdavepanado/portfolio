@@ -20,6 +20,7 @@ var hmPictureINTERVAL = null;
 var hmPPINTERVAL = null;
 
 function fadeInHMP() {
+    clearHManima();
     clearInterval(hmPPINTERVAL);
     clearInterval(hmPictureINTERVAL);
     clearInterval(hmiH1spanINTERVAL);
