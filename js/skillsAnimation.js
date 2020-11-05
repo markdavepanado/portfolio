@@ -100,7 +100,6 @@ function clearSkillsDetails(element) {
     element.getElementsByClassName("skills-information")[0].style.transition = "all 250ms";
     element.getElementsByClassName("line-horizontal")[0].style.transform = "translateX(-110%)";
     element.getElementsByClassName("skills-information")[0].style.transform = "translateX(100vw)";
-    element.getElementsByClassName("skill-rate-desc")[0].innerText = 0;
     element.getElementsByClassName("pie-chart")[0].style.backgroundImage = "conic-gradient(var(--strong-color) 0deg, var(--primary-color) 0)";
 }
 
