@@ -1,12 +1,17 @@
 var skills = document.getElementById('skills');
 var sLineVertical = document.getElementsByClassName('skills-line-vertical')[0];
 var skillsDetails = Array.from(document.getElementsByClassName('skills-details'));
-// const skillRatebl = Array.from(document.getElementsByClassName('skill-rate'));
 var skillRateArr = [];
 
 skillsDetails.forEach(sDetail => {
     skillRateArr.push(sDetail.getElementsByClassName("skill-rate")[0].innerText);
 });
+
+var siInformationCounter = [];
+
+for (var sic = 0; sic < skillsDetails.length; sic++) {
+    siInformationCounter[sic] = 0;
+}
 
 function slideUpSvLine() {
     sLineVertical.style.transition = "initial";
@@ -84,24 +89,29 @@ function animateSinformation(element, index) {
     var skillRateDesc = element.getElementsByClassName("skill-rate-desc")[0];
     var skillRateValue = skillRateArr[index];
 
-    var increment = 1;
-    var value = 0;
-    var instance = window.setInterval(function() {
-        if(value >= skillRateValue) {
-            window.clearInterval(instance);
-            skillRate.innerText = skillRateValue;
-            skillRateDesc.innerText = skillRateValue;
-            siPieChart.style.backgroundImage = "conic-gradient(var(--strong-color)" + value * 36 + "deg, var(--primary-color) 0)"
-        } else {
-            skillRate.innerText = value;
-            skillRateDesc.innerText = value;
-            siPieChart.style.backgroundImage = "conic-gradient(var(--strong-color)" + value * 36 + "deg, var(--primary-color) 0)"
-            value = value + increment;
-        }
-    }, 100);
+    siInformationCounter[index]++
+
+    if(siInformationCounter[index] == 1) {
+        var increment = 1;
+        var value = 0;
+        var instance = window.setInterval(function() {
+            if(value >= skillRateValue) {
+                window.clearInterval(instance);
+                skillRate.innerText = skillRateValue;
+                skillRateDesc.innerText = skillRateValue;
+                siPieChart.style.backgroundImage = "conic-gradient(var(--strong-color)" + value * 36 + "deg, var(--primary-color) 0)"
+            } else {
+                skillRate.innerText = value;
+                skillRateDesc.innerText = value;
+                siPieChart.style.backgroundImage = "conic-gradient(var(--strong-color)" + value * 36 + "deg, var(--primary-color) 0)"
+                value = value + increment;
+            }
+        }, 100);
+    }
 }
 
-function clearSkillsDetails(element) {
+function clearSkillsDetails(element, index) {
+    siInformationCounter[index] = 0;
     element.getElementsByClassName("line-horizontal")[0].style.transition = "all 500ms";
     element.getElementsByClassName("skills-information")[0].style.transition = "all 250ms";
     element.getElementsByClassName("line-horizontal")[0].style.transform = "translateX(-110%)";
