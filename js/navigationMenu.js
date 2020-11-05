@@ -42,6 +42,8 @@ for(var sdc = 0; sdc < skillsDetails.length; sdc++){
 }
 
 var offsetDecreaseValue = .60;
+var scrollEnded = -1;
+var isScrollStop = true;
 
 highlightActiveMenu();
 main.addEventListener('scroll' || 'wheel' || 'DOMMouseScroll' || 'mousewheel', highlightActiveMenu);
@@ -231,7 +233,9 @@ function skillsDetailsAnima(element, index) {
         }
 
         if(sdAnimaCounter[index] == 1) {
+            if(!isScrollStop) {
             slideRightSLineHorizontal(element);
+            }
         } else if (sdAnimaCounter[index] == 0) {
             clearSkillsDetails(element);
         }
@@ -239,7 +243,7 @@ function skillsDetailsAnima(element, index) {
 
 // HIRE ME
 
-function fullSkillsAnima() {
+function fullHireMeAnima() {
     let fromTop = Math.round(main.scrollTop + main.offsetTop);
     
     if(Math.round(hireme.offsetTop) <= fromTop && Math.round(hireme.offsetTop + hireme.offsetHeight) > fromTop) 
@@ -274,6 +278,7 @@ function highlightActiveMenu() {
         pastWorkAnima(pastWork[b], b);
     }
 
+    
     // SKILLS
     skillsAnima();
 
@@ -281,8 +286,26 @@ function highlightActiveMenu() {
         skillsDetailsAnima(skillsDetails[c], c);
     }
 
+    if (scrollEnded != -1) {
+        clearTimeout(scrollEnded);
+        isScrollStop = true;
+    } 
+
+    scrollEnded = window.setTimeout(function() {
+        isScrollStop = false;
+        
+        for(var sdcTwo = 0; sdcTwo < skillsDetails.length; sdcTwo++){
+            sdAnimaCounter[sdcTwo] = 0;
+        }
+
+        for(var d = 0; d < skillsDetails.length; d++) {
+            skillsDetailsAnima(skillsDetails[d], d);
+        }
+
+    }, 250);
+
     // HIRE ME
-    fullSkillsAnima();
+    fullHireMeAnima();
     
     
     navigationLinks.forEach(link => {

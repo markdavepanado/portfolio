@@ -736,7 +736,7 @@ body.error .header-main-footer-container main {
     }
     
     .skills-details:first-of-type {
-        padding: 65px 0 20px;
+        padding: 65px 0 0;
     }
 
     .pie-chart {
@@ -943,7 +943,7 @@ body.error .header-main-footer-container main {
     }
 
     .skills-details:first-of-type {
-        padding: 40px 0 20px;
+        padding: 40px 0 0;
     }
 
     .pie-chart {
