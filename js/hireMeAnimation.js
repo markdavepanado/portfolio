@@ -20,6 +20,14 @@ var hmPictureINTERVAL = null;
 var hmPPINTERVAL = null;
 
 function fadeInHMP() {
+    clearInterval(hmPPINTERVAL);
+    clearInterval(hmPictureINTERVAL);
+    clearInterval(hmiH1spanINTERVAL);
+    clearInterval(hmiH1INTERVAL);
+    clearInterval(hmiPspanINTERVAL);
+    clearInterval(hmiPstrongINTERVAL);
+    clearInterval(hmLineHorizontalINTERVAL);
+    clearInterval(hmiSmallINTERVAL);
     hiremePicture.style.transition = "initial";
     var increment = 0.01;
     var value = parseFloat(window.getComputedStyle(hiremePicture).getPropertyValue("opacity"));
@@ -181,14 +189,6 @@ function clearHManima() {
     hiremeInfoH1span.style.opacity = 0;
     hiremeInfoSmall.style.transition = "all 500ms";
     hiremeInfoSmall.style.transform = "translateY(100vw)";
-    clearInterval(hmPPINTERVAL);
-    clearInterval(hmPictureINTERVAL);
-    clearInterval(hmiH1spanINTERVAL);
-    clearInterval(hmiH1INTERVAL);
-    clearInterval(hmiPspanINTERVAL);
-    clearInterval(hmiPstrongINTERVAL);
-    clearInterval(hmLineHorizontalINTERVAL);
-    clearInterval(hmiSmallINTERVAL);
 }
 
 // PADDING TOP BOTTOM
